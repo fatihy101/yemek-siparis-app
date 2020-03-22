@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "914656948011",
+    "firebase_url": "https://yazilim-muhendisligi-db.firebaseio.com",
+    "project_id": "yazilim-muhendisligi-db",
+    "storage_bucket": "yazilim-muhendisligi-db.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:914656948011:android:dc4e4c7fcbdd2708c71f6e",
+        "android_client_info": {
+          "package_name": "com.yazilimmuhendisligi.yemeksiparis"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "914656948011-rvtbapf92rra0q433s5tj2q7vlqe8vhb.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.yazilimmuhendisligi.yemeksiparis",
+            "certificate_hash": "05706c9380624ff80389da8afbd851ad5f430a25"
+          }
+        },
+        {
+          "client_id": "914656948011-kvc6jv3o56sapmrfd5j7d7k7t4rqm130.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyABPD0wYSFKLQBKRvv5Tem9O2VxmVTh9Jw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "914656948011-kvc6jv3o56sapmrfd5j7d7k7t4rqm130.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
