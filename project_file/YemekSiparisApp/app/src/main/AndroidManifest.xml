@@ -10,12 +10,22 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
+            android:name=".adminMain"
+            android:label="@string/title_activity_admin_main"></activity>
+        <activity
             android:name=".musteri"
-            android:label="@string/title_activity_musteri"></activity>
-
-        <activity android:name=".parolaUnuttum" android:parentActivityName=".girisActivity" />
-        <activity android:name=".firmaKayit" android:label="Firma Kayıt" android:parentActivityName=".girisActivity"/>
-        <activity android:name=".musteriKayit" android:label="Müşteri Kayıt" android:parentActivityName=".girisActivity"/>
+            android:label="@string/title_activity_musteri" />
+        <activity
+            android:name=".parolaUnuttum"
+            android:parentActivityName=".girisActivity" />
+        <activity
+            android:name=".firmaKayit"
+            android:label="Firma Kayıt"
+            android:parentActivityName=".girisActivity" />
+        <activity
+            android:name=".musteriKayit"
+            android:label="Müşteri Kayıt"
+            android:parentActivityName=".girisActivity" />
         <activity android:name=".girisActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
