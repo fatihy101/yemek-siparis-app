@@ -10,8 +10,11 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
+            android:name=".firmaActivity"
+            android:label="@string/title_activity_firma"></activity>
+        <activity
             android:name=".adminMain"
-            android:label="@string/title_activity_admin_main"></activity>
+            android:label="@string/title_activity_admin_main" />
         <activity
             android:name=".musteri"
             android:label="@string/title_activity_musteri" />
