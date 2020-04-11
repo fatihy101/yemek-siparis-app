@@ -22,7 +22,7 @@ public class digerMenuMusteriFragment extends Fragment {
                              ViewGroup container, Bundle savedInstanceState) {
         notificationsViewModel =
                 ViewModelProviders.of(this).get(digerMenuMusteriViewModel.class);
-        View root = inflater.inflate(R.layout.fragment_digerMenuMusteri, container, false);
+        View root = inflater.inflate(R.layout.fragment_diger_menu_musteri, container, false);
         final TextView textView = root.findViewById(R.id.text_notifications);
         notificationsViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
             @Override

@@ -6,4 +6,74 @@
     android:layout_height="match_parent"
     tools:context=".girisActivity">
 
+    <EditText
+        android:id="@+id/giris_email_text"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="96dp"
+        android:hint="E-postanız"
+        android:inputType="textEmailAddress"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/giris_parola_text"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:hint="Parolanız"
+        android:inputType="textPassword"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.503"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/giris_email_text"
+        app:layout_constraintVertical_bias="0.101" />
+
+    <Button
+        android:id="@+id/giris_onay_button"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="72dp"
+        android:onClick="girisYapButton"
+        android:text="Giriş Yap"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/giris_parola_text" />
+
+    <Button
+        android:id="@+id/restoran_kayit_button"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="22dp"
+        android:onClick="kullaniciKayitButton"
+        android:text="Kullanıcı kayıt"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/giris_onay_button" />
+
+    <Button
+        android:id="@+id/kullanici_kayit_button"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="22dp"
+        android:onClick="restoranKayitButton"
+        android:text="Restorant kayıt"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/restoran_kayit_button" />
+
+    <Button
+        android:id="@+id/sifremi_unuttum_button"
+        android:layout_width="30dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="188dp"
+        android:onClick="parolaUnuttumButton"
+        android:text="@string/sifremi_unuttum"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.44"
+        app:layout_constraintStart_toEndOf="@+id/giris_parola_text"
+        app:layout_constraintTop_toTopOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
