@@ -1,42 +1,34 @@
 {
   "project_info": {
-    "project_number": "298721155585",
-    "firebase_url": "https://yemek-siparis-app.firebaseio.com",
-    "project_id": "yemek-siparis-app",
-    "storage_bucket": "yemek-siparis-app.appspot.com"
+    "project_number": "914656948011",
+    "firebase_url": "https://yazilim-muhendisligi-db.firebaseio.com",
+    "project_id": "yazilim-muhendisligi-db",
+    "storage_bucket": "yazilim-muhendisligi-db.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:298721155585:android:d9a845c6ff78ed0281be00",
+        "mobilesdk_app_id": "1:914656948011:android:dc4e4c7fcbdd2708c71f6e",
         "android_client_info": {
           "package_name": "com.yazilimmuhendisligi.yemeksiparis"
         }
       },
       "oauth_client": [
         {
-          "client_id": "298721155585-pc83fmcqi1qtm5khg3hti3nfbp2usfq6.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.yazilimmuhendisligi.yemeksiparis",
-            "certificate_hash": "05706c9380624ff80389da8afbd851ad5f430a25"
-          }
-        },
-        {
-          "client_id": "298721155585-49ccgl9pssnlv3b6ugik4oqjusiooomf.apps.googleusercontent.com",
+          "client_id": "914656948011-kvc6jv3o56sapmrfd5j7d7k7t4rqm130.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyC6KDDx8ic7OPKofffkUh-ne9mO2MIPALA"
+          "current_key": "AIzaSyABPD0wYSFKLQBKRvv5Tem9O2VxmVTh9Jw"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "298721155585-49ccgl9pssnlv3b6ugik4oqjusiooomf.apps.googleusercontent.com",
+              "client_id": "914656948011-kvc6jv3o56sapmrfd5j7d7k7t4rqm130.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
