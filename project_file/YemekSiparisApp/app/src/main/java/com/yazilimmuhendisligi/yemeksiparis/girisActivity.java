@@ -19,6 +19,7 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -34,19 +35,20 @@ import java.util.Objects;
 
 public class girisActivity extends AppCompatActivity {
 /* Authentication ID'leri
-* 0 = Kullanıcı
-* 1 = Firma
-* 2 = Admin*/
+* 1 = Musteri
+* 2 = Firma
+* 3 = Admin*/
 
     EditText email, parola;
     private FirebaseAuth mAuth;
     private FirebaseFirestore firebaseFirestore;
+    Kullanici kullanici;
+    FirebaseUser currentUser;
 
     @Override
     protected void onStart() {
         super.onStart();
-        mAuth.signOut(); //test amaçlı
-        FirebaseUser currentUser = mAuth.getCurrentUser();
+         mAuth.signOut(); // test amaçlı
         girisYapmisMi(currentUser);
     }
 
@@ -60,36 +62,6 @@ public class girisActivity extends AppCompatActivity {
         firebaseFirestore = FirebaseFirestore.getInstance();
     }
 
-
-
-    public void girisYapButton(View view)
-    {
-
-        if(email.getText().toString().equals("") || parola.getText().toString().equals(""))
-        {
-            Toast.makeText(this, "Lütfen e-posta ve parola alanını doldurduğunuza emin olunuz", Toast.LENGTH_LONG).show();
-        }
-        else
-        {
-            mAuth.signInWithEmailAndPassword(email.getText().toString(),parola.getText().toString()).addOnSuccessListener(new OnSuccessListener<AuthResult>() {
-                @Override
-                public void onSuccess(AuthResult authResult) {
-                    Toast.makeText(girisActivity.this, "Bilgiler doğru!", Toast.LENGTH_SHORT).show();
-                    Object testObject = YetkiveriAlFirebase(email.getText().toString());
-                    if (testObject == null) System.out.println("Test object null"); // Test amaçlı
-                    YetkiyeGoreYonlendirme(testObject);
-                }
-            }).addOnFailureListener(new OnFailureListener() {
-                @Override
-                public void onFailure(@NonNull Exception e) {
-                    Toast.makeText(girisActivity.this, e.getLocalizedMessage(), Toast.LENGTH_LONG).show();
-                }
-            });
-        }
-    }
-
-
-
     public void girisYapmisMi(FirebaseUser user) //Kontrolü "onStart"ta yapılır.
     {
         if(user != null)
@@ -99,11 +71,10 @@ public class girisActivity extends AppCompatActivity {
         }
     }
 
-    public void YetkiyeGoreYonlendirme(Object idNo)
+    public void YetkiyeGoreYonlendirme(String idNo)
     {Intent intent;
         System.out.println("YetkiyeGoreYonlendirme.class'a ulaşıldı... " + idNo);
-        String idTemp = "0"; // FIXME
-        switch (idTemp)
+        switch (idNo)
         {
             case "1":
                 intent = new Intent(girisActivity.this,musteri.class);
@@ -123,41 +94,60 @@ public class girisActivity extends AppCompatActivity {
 
     }
 
-    public Object YetkiveriAlFirebase(String email) //Kullanıcının yetki seviyesini DB'den çekmek için.
-    {
-        System.out.println("yetkiveriAlFirebase'e ulaşıldı.");
-        final Object[] yetkiIDObj = new Object[1];
-        CollectionReference kullaniciRef = firebaseFirestore.collection("kullanici_bilgileri");
-        final Query query = kullaniciRef.whereEqualTo("email",email);
-                query.get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-                    @Override
-                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                        System.out.println("Devam"); // Uygulama buraya hiç gelmiyor FIXME
-                    if(task.isSuccessful())
-                    {
 
-                              for (QueryDocumentSnapshot document : Objects.requireNonNull(task.getResult()))
-                              {
-                                Map<String,Object> kullaniciData = document.getData();
-                               yetkiIDObj[0] = kullaniciData.get("yetki_id");
-                                  System.out.println("ID: "+ yetkiIDObj[0]);
-                              }
-                    }
-                    else
-                    {
-                        Toast.makeText(girisActivity.this, "Veritabanında email'a rastlanmadı.", Toast.LENGTH_SHORT).show();
-                    }
+    public void yetkiVerisiniAl()
+    {
+
+        DocumentReference docRef = firebaseFirestore.collection("kullanici_bilgileri").document(kullanici.getUID());
+        docRef.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+            @Override
+            public void onSuccess(DocumentSnapshot documentSnapshot) {
+                if(documentSnapshot.exists())
+                {
+                 String yetkiID = documentSnapshot.getString("yetki_id");
+                 YetkiyeGoreYonlendirme(yetkiID);
                 }
-            }).addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        System.out.println(e.getLocalizedMessage());
-                    }
-                });
-    return yetkiIDObj;
+                else
+                {
+                    System.out.println("ERROR: Kayıt bulunamadı");
+                }
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+
+            }
+        });
+
     }
 
-    //On Click methodları
+    //region On-Click Metotları
+    public void girisYapButton(View view)
+    {
+
+        if(email.getText().toString().equals("") || parola.getText().toString().equals(""))
+        {
+            Toast.makeText(this, "Lütfen e-posta ve parola alanını doldurduğunuza emin olunuz", Toast.LENGTH_LONG).show();
+        }
+        else
+        {
+            mAuth.signInWithEmailAndPassword(email.getText().toString(),parola.getText().toString()).addOnSuccessListener(new OnSuccessListener<AuthResult>() {
+                @Override
+                public void onSuccess(AuthResult authResult) {
+                    Toast.makeText(girisActivity.this, "Bilgiler doğru!", Toast.LENGTH_SHORT).show();
+                    currentUser = mAuth.getCurrentUser();
+                    kullanici = new Kullanici(currentUser.getEmail(), currentUser.getUid());
+                    yetkiVerisiniAl();
+                }
+            }).addOnFailureListener(new OnFailureListener() {
+                @Override
+                public void onFailure(@NonNull Exception e) {
+                    Toast.makeText(girisActivity.this, e.getLocalizedMessage(), Toast.LENGTH_LONG).show();
+                }
+            });
+        }
+    }
+
     public void kullaniciKayitButton(View view)
     {
         Intent intent = new Intent(getApplicationContext(),musteriKayit.class);
@@ -174,6 +164,6 @@ public class girisActivity extends AppCompatActivity {
         Intent intent = new Intent(getApplicationContext(),parolaUnuttum.class);
         startActivity(intent);
     }
-
+    //endregion
 
 }
