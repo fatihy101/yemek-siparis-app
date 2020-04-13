@@ -48,7 +48,6 @@ public class girisActivity extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
-         mAuth.signOut(); // test amaçlı
         girisYapmisMi(currentUser);
     }
 
@@ -67,7 +66,7 @@ public class girisActivity extends AppCompatActivity {
         if(user != null)
         {
             Toast.makeText(this, "Zaten giriş yapmışsınız.", Toast.LENGTH_LONG).show(); //Geçici olarak bir Toast mesajı bıraktım.
-            //Gerekli ekrana yönlendirsin. TODO: Kullanıcılar oluştur ve kullanıcıların yetki seviyelerine göre yönlendirmeyi direkt yap.
+            yetkiVerisiniAl();
         }
     }
 
@@ -98,13 +97,14 @@ public class girisActivity extends AppCompatActivity {
     public void yetkiVerisiniAl()
     {
 
-        DocumentReference docRef = firebaseFirestore.collection("kullanici_bilgileri").document(kullanici.getUID());
+        DocumentReference docRef = firebaseFirestore.collection("kullanici_bilgileri").document(mAuth.getCurrentUser().getUid());
         docRef.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
             @Override
             public void onSuccess(DocumentSnapshot documentSnapshot) {
                 if(documentSnapshot.exists())
                 {
                  String yetkiID = documentSnapshot.getString("yetki_id");
+
                  YetkiyeGoreYonlendirme(yetkiID);
                 }
                 else
@@ -156,7 +156,7 @@ public class girisActivity extends AppCompatActivity {
 
     public void restoranKayitButton(View view)
     {
-        Intent intent = new Intent(getApplicationContext(),musteriKayit.class);
+        Intent intent = new Intent(getApplicationContext(),firmaKayit.class);
         startActivity(intent);
     }
     public void parolaUnuttumButton (View view)
