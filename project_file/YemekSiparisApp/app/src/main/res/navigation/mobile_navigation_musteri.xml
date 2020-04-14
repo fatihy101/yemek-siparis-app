@@ -3,22 +3,22 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@+id/musteri_ekrani_admin">
+    app:startDestination="@+id/restoran_liste_musteri">
 
     <fragment
-        android:id="@+id/musteri_ekrani_admin"
+        android:id="@+id/restoran_liste_musteri"
         android:name="com.yazilimmuhendisligi.yemeksiparis.ui_musteri.anaMenu.anaMenuFragment"
         android:label="@string/title_restoran_liste_musteri"
         tools:layout="@layout/fragment_ana_menu" />
 
     <fragment
-        android:id="@+id/firma_ekrani_admin"
+        android:id="@+id/sepet_musteri"
         android:name="com.yazilimmuhendisligi.yemeksiparis.ui_musteri.sepet.sepetFragment"
         android:label="@string/title_sepet_musteri"
         tools:layout="@layout/fragment_sepet" />
 
     <fragment
-        android:id="@+id/diger_admin"
+        android:id="@+id/diger_musteri"
         android:name="com.yazilimmuhendisligi.yemeksiparis.ui_musteri.digerMenuMusteri.digerMenuMusteriFragment"
         android:label="@string/title_diger"
         tools:layout="@layout/fragment_diger_menu_musteri" />
