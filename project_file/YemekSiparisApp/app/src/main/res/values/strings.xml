@@ -1,10 +1,19 @@
 <resources>
     <string name="app_name">YemekSiparisApp</string>
     <string name="title_activity_musteri">musteri</string>
-    <string name="title_home">Home</string>
-    <string name="title_dashboard">Dashboard</string>
-    <string name="title_notifications">Notifications</string>
-    <string name="title_activity_admin_main">adminMain</string>
-    <string name="title_activity_firma">firmaActivity</string>
-    <string name="sifremi_unuttum">\?</string>
+
+    <string name="title_musteri_ekrani_admin">Müşteriler</string>
+    <string name="title_firma_ekrani_admin">Firmalar</string>
+    <string name="title_diger">Diğer</string>
+
+    <string name="title_restoran_liste_musteri">Restoranlar</string>
+    <string name="title_sepet_musteri">Sepet</string>
+
+    <string name="title_gelen_siparis_firma">Gelen Sipariş</string>
+    <string name="title_menu_firma">Menu</string>
+
+
+    <string name="title_activity_admin_main">Admin Paneli</string>
+    <string name="title_activity_firma">Restoran İsmi</string>
+
 </resources>

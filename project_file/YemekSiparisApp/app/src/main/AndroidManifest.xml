@@ -20,6 +20,7 @@
             android:label="@string/title_activity_musteri" />
         <activity
             android:name=".parolaUnuttum"
+            android:label="Parolamı Unuttum"
             android:parentActivityName=".girisActivity" />
         <activity
             android:name=".firmaKayit"

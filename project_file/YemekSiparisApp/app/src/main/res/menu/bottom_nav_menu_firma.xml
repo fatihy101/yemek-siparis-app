@@ -2,17 +2,17 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/musteri_ekrani_admin"
+        android:id="@+id/gelen_siparis_firma"
         android:icon="@drawable/ic_home_black_24dp"
-        android:title="@string/title_musteri_ekrani_admin" />
+        android:title="@string/title_gelen_siparis_firma" />
 
     <item
-        android:id="@+id/firma_ekrani_admin"
+        android:id="@+id/menu_firma"
         android:icon="@drawable/ic_dashboard_black_24dp"
-        android:title="@string/title_firma_ekrani_admin" />
+        android:title="@string/title_menu_firma" />
 
     <item
-        android:id="@+id/diger_admin"
+        android:id="@+id/diger_firma"
         android:icon="@drawable/ic_notifications_black_24dp"
         android:title="@string/title_diger" />
 

@@ -6,4 +6,105 @@
     android:layout_height="match_parent"
     tools:context=".firmaKayit">
 
+    <EditText
+        android:id="@+id/kayit_firma_email"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="54dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginEnd="54dp"
+        android:autofillHints="email"
+        android:hint="E-postanız"
+        android:inputType="textEmailAddress"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/kayit_marka_adi"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="54dp"
+        android:layout_marginTop="25dp"
+        android:layout_marginEnd="54dp"
+        android:autofillHints=""
+        android:hint="İşletme Adı"
+        android:inputType="text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/kayit_firma_email" />
+
+    <EditText
+        android:id="@+id/kayit_firma_sahibi_adsoyad"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="54dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="54dp"
+        android:autofillHints=""
+        android:hint="İşletme Sahibinin Adı Soyadı"
+        android:inputType="text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/kayit_marka_adi" />
+
+    <EditText
+        android:id="@+id/kayit_tel_firma"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="54dp"
+        android:layout_marginTop="26dp"
+        android:layout_marginEnd="54dp"
+        android:autofillHints=""
+        android:hint="Telefon numaranız"
+        android:inputType="phone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/kayit_firma_sahibi_adsoyad" />
+
+    <EditText
+        android:id="@+id/kayit_parola_firma"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="54dp"
+        android:layout_marginTop="14dp"
+        android:layout_marginEnd="54dp"
+        android:autofillHints=""
+        android:hint="Parolanız"
+        android:inputType="textPassword"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/kayit_tel_firma" />
+
+    <EditText
+        android:id="@+id/kayit_firma_parola_re"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="54dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="54dp"
+        android:autofillHints=""
+        android:hint="Parolanızı yeniden girin"
+        android:inputType="textPassword"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/kayit_parola_firma" />
+
+    <Button
+        android:id="@+id/firma_kayit_ol_button"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="54dp"
+        android:layout_marginTop="25dp"
+        android:layout_marginEnd="54dp"
+        android:autofillHints=""
+        android:enabled="false"
+        android:onClick="firmaKayitOLButton"
+        android:text="Kaydol"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/kayit_firma_parola_re"
+        app:layout_editor_absoluteX="55dp"
+        app:layout_editor_absoluteY="460dp" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

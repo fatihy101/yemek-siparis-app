@@ -3,23 +3,23 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@+id/navigation_home">
+    app:startDestination="@+id/musteri_ekrani_admin">
 
     <fragment
-        android:id="@+id/navigation_home"
+        android:id="@+id/musteri_ekrani_admin"
         android:name="com.yazilimmuhendisligi.yemeksiparis.ui_admin.kullaniciAdminPanel.kullaniciAdminPanelFragment"
-        android:label="@string/title_home"
+        android:label="@string/title_musteri_ekrani_admin"
         tools:layout="@layout/fragment_admin_panel" />
 
     <fragment
-        android:id="@+id/navigation_dashboard"
+        android:id="@+id/firma_ekrani_admin"
         android:name="com.yazilimmuhendisligi.yemeksiparis.ui_admin.firmaAdminPanel.firmaAdminPanelFragment"
-        android:label="@string/title_dashboard"
+        android:label="@string/title_firma_ekrani_admin"
         tools:layout="@layout/fragment_firma_admin_panel" />
 
     <fragment
-        android:id="@+id/navigation_notifications"
+        android:id="@+id/diger_admin"
         android:name="com.yazilimmuhendisligi.yemeksiparis.ui_admin.digerleriAdmin.digerleriAdminFragment"
-        android:label="@string/title_notifications"
+        android:label="@string/title_diger"
         tools:layout="@layout/fragment_digerleri_admin" />
 </navigation>

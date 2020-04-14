@@ -17,7 +17,8 @@
         android:inputType="textEmailAddress"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:autofillHints="email" />
 
     <EditText
         android:id="@+id/musteri_kayit_ad"
@@ -30,7 +31,8 @@
         android:inputType="text"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/musteri_kayit_email" />
+        app:layout_constraintTop_toBottomOf="@+id/musteri_kayit_email"
+        android:autofillHints="" />
 
     <EditText
         android:id="@+id/musteri_kayit_soyad"
@@ -43,7 +45,8 @@
         android:inputType="text"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/musteri_kayit_ad" />
+        app:layout_constraintTop_toBottomOf="@+id/musteri_kayit_ad"
+        android:autofillHints="" />
 
     <EditText
         android:id="@+id/musteri_kayit_tel"
@@ -56,7 +59,8 @@
         android:inputType="phone"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/musteri_kayit_soyad" />
+        app:layout_constraintTop_toBottomOf="@+id/musteri_kayit_soyad"
+        android:autofillHints="" />
 
     <EditText
         android:id="@+id/musteri_kayit_parola"
@@ -69,7 +73,8 @@
         android:inputType="textPassword"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/musteri_kayit_tel" />
+        app:layout_constraintTop_toBottomOf="@+id/musteri_kayit_tel"
+        android:autofillHints="" />
 
     <EditText
         android:id="@+id/musteri_kayit_parola_re"
@@ -82,7 +87,8 @@
         android:inputType="textPassword"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/musteri_kayit_parola" />
+        app:layout_constraintTop_toBottomOf="@+id/musteri_kayit_parola"
+        android:autofillHints=""/>
 
     <Button
         android:id="@+id/musteri_kayit_ol_button"
@@ -98,7 +104,8 @@
         app:layout_constraintTop_toBottomOf="@+id/musteri_kayit_parola_re"
         app:layout_editor_absoluteX="55dp"
         app:layout_editor_absoluteY="460dp"
-        android:enabled="false"/>
+        android:enabled="false"
+        android:autofillHints="" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
