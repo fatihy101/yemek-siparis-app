@@ -13,10 +13,10 @@
             android:name=".firmaActivity"
             android:label="@string/title_activity_firma"/>
         <activity
-            android:name=".adminMain"
+            android:name=".adminActivity"
             android:label="@string/title_activity_admin_main" />
         <activity
-            android:name=".musteri"
+            android:name=".musteriActivity"
             android:label="@string/title_activity_musteri" />
         <activity
             android:name=".parolaUnuttum"

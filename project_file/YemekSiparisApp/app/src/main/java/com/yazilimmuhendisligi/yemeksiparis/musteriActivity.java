@@ -18,13 +18,12 @@ import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
-public class firmaActivity extends AppCompatActivity {
-FirebaseAuth auth;
-
+public class musteriActivity extends AppCompatActivity {
+    FirebaseAuth auth;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_firma);
+        setContentView(R.layout.activity_musteri);
         BottomNavigationView navView = findViewById(R.id.nav_view);
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
@@ -39,7 +38,6 @@ FirebaseAuth auth;
         //Buradan sonra yazmaya başlayın.
         auth = FirebaseAuth.getInstance();
     }
-
 
     //region Sağ üstte açılan menü için metotlar
     @Override
@@ -63,4 +61,5 @@ FirebaseAuth auth;
         return super.onOptionsItemSelected(item);
     }
     //endregion
+
 }
