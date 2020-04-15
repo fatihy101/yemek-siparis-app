@@ -22,7 +22,7 @@ public class kullaniciAdminPanelFragment extends Fragment {
                              ViewGroup container, Bundle savedInstanceState) {
         kullaniciAdminPanelViewModel =
                 ViewModelProviders.of(this).get(kullaniciAdminPanelViewModel.class);
-        View root = inflater.inflate(R.layout.fragment_admin_panel, container, false);
+        View root = inflater.inflate(R.layout.fragment_admin_musteri_panel, container, false);
         final TextView textView = root.findViewById(R.id.text_home);
         kullaniciAdminPanelViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
             @Override

@@ -9,7 +9,7 @@
         android:id="@+id/musteri_ekrani_admin"
         android:name="com.yazilimmuhendisligi.yemeksiparis.ui_admin.kullaniciAdminPanel.kullaniciAdminPanelFragment"
         android:label="@string/title_musteri_ekrani_admin"
-        tools:layout="@layout/fragment_admin_panel" />
+        tools:layout="@layout/fragment_admin_musteri_panel" />
 
     <fragment
         android:id="@+id/firma_ekrani_admin"

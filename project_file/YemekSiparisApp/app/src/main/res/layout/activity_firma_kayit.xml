@@ -21,14 +21,14 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/kayit_marka_adi"
+        android:id="@+id/kayit_firma_adi"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="54dp"
         android:layout_marginTop="25dp"
         android:layout_marginEnd="54dp"
         android:autofillHints=""
-        android:hint="İşletme Adı"
+        android:hint="Firma Adı"
         android:inputType="text"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -46,7 +46,7 @@
         android:inputType="text"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/kayit_marka_adi" />
+        app:layout_constraintTop_toBottomOf="@+id/kayit_firma_adi" />
 
     <EditText
         android:id="@+id/kayit_tel_firma"
