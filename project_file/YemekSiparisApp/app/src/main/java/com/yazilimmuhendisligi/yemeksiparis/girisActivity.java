@@ -17,6 +17,9 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.yazilimmuhendisligi.yemeksiparis.ui_admin.adminActivity;
+import com.yazilimmuhendisligi.yemeksiparis.ui_firma.firmaActivity;
+import com.yazilimmuhendisligi.yemeksiparis.ui_musteri.musteriActivity;
 
 public class girisActivity extends AppCompatActivity {
 /* Authentication ID'leri
@@ -65,7 +68,7 @@ public class girisActivity extends AppCompatActivity {
                 startActivity(intent);
                 break;
             case "2":
-                 intent = new Intent(girisActivity.this,firmaActivity.class);
+                 intent = new Intent(girisActivity.this, firmaActivity.class);
                 startActivity(intent);
                 break;
             case "3":

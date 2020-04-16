@@ -1,33 +1,57 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/container"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingTop="?attr/actionBarSize">
+    tools:context=".ui_admin.adminActivity">
 
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/nav_view"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="0dp"
-        android:layout_marginEnd="0dp"
-        android:background="?android:attr/windowBackground"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:menu="@menu/bottom_nav_menu" />
-
-    <fragment
-        android:id="@+id/nav_host_fragment"
-        android:name="androidx.navigation.fragment.NavHostFragment"
+    <Button
+        android:id="@+id/firma_listele_admin"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:defaultNavHost="true"
-        app:layout_constraintBottom_toTopOf="@id/nav_view"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:navGraph="@navigation/mobile_navigation_admin" />
+        android:layout_height="wrap_content"
+        android:text="Firmaları Listele"
+        android:background="@color/colorPrimaryDark"
+        android:textColor="@android:color/white"
+        android:layout_row="0"
+        android:layout_column="0"
+        android:textAllCaps="false"
+        android:onClick="firmalariListeleButton"
+        />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <Button
+        android:id="@+id/musteri_listele_admin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Müşterileri listele"
+        android:background="@color/colorPrimaryDark"
+        android:textColor="@android:color/white"
+        android:layout_row="1"
+        android:layout_column="0"
+        android:textAllCaps="false"
+        />
+
+    <Button
+        android:id="@+id/karaliste_musteri"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Karalisteye Alınan Müşterileri Görüntüle"
+        android:textAllCaps="false"
+        android:layout_row="2"
+        android:layout_column="0"
+        android:textColor="@android:color/white"
+        android:background="@color/colorPrimaryDark"/>
+
+    <Button
+        android:id="@+id/karaliste_firma"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Karalisteye Alınan Firmaları Görüntüle"
+        android:textAllCaps="false"
+        android:layout_row="3"
+        android:layout_column="0"
+        android:textColor="@android:color/white"
+        android:background="@color/colorPrimaryDark"/>
+
+
+</GridLayout>

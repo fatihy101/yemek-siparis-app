@@ -9,14 +9,25 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".ui_musteri.GecmisSiparisMusteri.GecmisSiparisMusteri"/>
+        <activity android:name=".ui_musteri.SiparisVerActivity.SiparisVerActivity" android:label="Sipariş Ver" />
+        <activity android:name=".ui_musteri.Sepet.Sepet" />
+        <activity android:name=".ui_musteri.MusteriBilgileriGuncelle.MusteriBilgileriGuncelle" />
+        <activity android:name=".ui_firma.UrunMenu.UrunMenu" />
+        <activity android:name=".ui_firma.GelenSiparis.GelenSiparis" />
+        <activity android:name=".ui_firma.FirmaBilgileriGuncelle.FirmaBilgileriGuncelle" />
+        <activity android:name=".ui_admin.MusteriListeleAdmin.MusteriListeleAdmin" />
+        <activity android:name=".ui_admin.MusteriKaraliste.MusteriKaraliste" />
+        <activity android:name=".ui_admin.FirmaKaraliste.FirmaKaraliste" />
+        <activity android:name=".ui_admin.FirmaListeleAdmin.FirmaListeleAdmin" />
         <activity
-            android:name=".firmaActivity"
-            android:label="@string/title_activity_firma"/>
+            android:name=".ui_firma.firmaActivity"
+            android:label="@string/title_activity_firma" />
         <activity
-            android:name=".adminActivity"
+            android:name=".ui_admin.adminActivity"
             android:label="@string/title_activity_admin_main" />
         <activity
-            android:name=".musteriActivity"
+            android:name=".ui_musteri.musteriActivity"
             android:label="@string/title_activity_musteri" />
         <activity
             android:name=".parolaUnuttum"

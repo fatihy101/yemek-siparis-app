@@ -14,7 +14,7 @@
 
 
     <string name="title_activity_admin_main">Admin Paneli</string>
-    <string name="title_activity_firma">Restoran İsmi</string>
+    <string name="title_activity_firma">Restoran Paneli</string>
     <string name="parolamı_unuttum">\?</string>
 
 </resources>
