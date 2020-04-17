@@ -26,7 +26,8 @@
         android:background="@color/colorPrimaryDark"
         android:textColor="@color/textColor"
         android:text="Menüyü Güncelle"
-        android:textAllCaps="false"/>
+        android:textAllCaps="false"
+        android:onClick="restoranMenusuneGit"/>
 
     <Button
         android:id="@+id/bilgi_guncelle_firma_button"

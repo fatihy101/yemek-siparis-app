@@ -6,4 +6,78 @@
     android:layout_height="match_parent"
     tools:context=".ui_firma.UrunMenu.UrunMenu">
 
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimaryDark"
+        android:text="Ürün Ekle"
+        android:textAlignment="center"
+        android:textAllCaps="true"
+        android:textColor="@color/textColor"
+        android:fontFamily="sans-serif-black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/urun_ismi_ekle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="37dp"
+        android:hint="Ürün ismi"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/urun_fiyat_ekle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="21dp"
+        android:hint="Fiyat"
+        app:layout_constraintEnd_toStartOf="@+id/urun_ekle_onay_button"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/urun_ismi_ekle" />
+
+    <Button
+        android:id="@+id/urun_ekle_onay_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="11dp"
+        android:layout_marginEnd="186dp"
+        android:background="@color/colorPrimaryDark"
+        android:text="EKLE"
+        android:textColor="@color/textColor"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/urun_fiyat_ekle"
+        app:layout_constraintTop_toBottomOf="@+id/urun_ismi_ekle"
+        android:onClick="dbUrunEkle"/>
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:background="@color/colorPrimaryDark"
+        android:text="Menüdeki Ürünler"
+        android:textAlignment="center"
+        android:textAllCaps="true"
+        android:textColor="@color/textColor"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/urun_fiyat_ekle"
+        android:fontFamily="sans-serif-black"/>
+
+    <!--Buradan sonrası yazılacak-->
+   <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView_menu_guncelle"
+        android:layout_width="0dp"
+        android:layout_height="426dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -5,12 +5,14 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.yazilimmuhendisligi.yemeksiparis.R;
 import com.yazilimmuhendisligi.yemeksiparis.girisActivity;
+import com.yazilimmuhendisligi.yemeksiparis.ui_firma.UrunMenu.UrunMenu;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
@@ -33,6 +35,12 @@ FirebaseAuth auth;
         auth = FirebaseAuth.getInstance();
     }
 
+
+    public void restoranMenusuneGit(View view)
+    {
+        Intent intent = new Intent(getApplicationContext(), UrunMenu.class);
+        startActivity(intent);
+    }
 
     //region Sağ üstte açılan menü için metotlar
     @Override
