@@ -5,11 +5,16 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.yazilimmuhendisligi.yemeksiparis.R;
 import com.yazilimmuhendisligi.yemeksiparis.girisActivity;
+import com.yazilimmuhendisligi.yemeksiparis.ui_musteri.GecmisSiparisMusteri.GecmisSiparisMusteri;
+import com.yazilimmuhendisligi.yemeksiparis.ui_musteri.MusteriBilgileriGuncelle.MusteriBilgileriGuncelle;
+import com.yazilimmuhendisligi.yemeksiparis.ui_musteri.Sepet.Sepet;
+import com.yazilimmuhendisligi.yemeksiparis.ui_musteri.SiparisVerActivity.SiparisVerActivity;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
@@ -26,6 +31,31 @@ public class musteriActivity extends AppCompatActivity {
         //Buradan sonra yazmaya başlayın.
         auth = FirebaseAuth.getInstance();
     }
+    //region Buttonlar için intent Methodları
+    public void musteriBilgileriGuncelleGit(View view)
+    {
+        Intent intent = new Intent(getApplicationContext(), MusteriBilgileriGuncelle.class);
+        startActivity(intent);
+    }
+
+    public void sepetActivityGit(View view)
+    {
+        Intent intent = new Intent(getApplicationContext(), Sepet.class);
+        startActivity(intent);
+    }
+
+    public void gecmisSiparisActivityGit(View view)
+    {
+        Intent intent = new Intent(getApplicationContext(), GecmisSiparisMusteri.class);
+        startActivity(intent);
+    }
+
+    public void siparisVerActivityGit(View view)
+    {
+        Intent intent = new Intent(getApplicationContext(), SiparisVerActivity.class);
+        startActivity(intent);
+    }
+//endregion
 
     //region Sağ üstte açılan menü için metotlar
     @Override
