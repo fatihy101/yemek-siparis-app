@@ -6,4 +6,118 @@
     android:layout_height="match_parent"
     tools:context=".ui_musteri.MusteriBilgileriGuncelle.MusteriBilgileriGuncelle">
 
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="21dp"
+        android:background="@color/colorPrimaryDark"
+        android:text="Adresi Ekle/Güncelle"
+        android:textAlignment="center"
+        android:textAllCaps="true"
+        android:textColor="@color/textColor"
+        app:layout_constraintBottom_toTopOf="@+id/sehirler_spinner"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Spinner
+        android:id="@+id/sehirler_spinner"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        app:layout_constraintBottom_toTopOf="@+id/semt_musteri_text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView3" />
+
+    <EditText
+        android:id="@+id/semt_musteri_text"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="18dp"
+        android:hint="Semt/Mahalle"
+        app:layout_constraintBottom_toTopOf="@+id/sokak_musteri_text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/sehirler_spinner" />
+
+    <EditText
+        android:id="@+id/sokak_musteri_text"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="22dp"
+        android:hint="Sokak"
+        app:layout_constraintBottom_toTopOf="@+id/acik_adres_musteri_text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/semt_musteri_text" />
+
+    <EditText
+        android:id="@+id/acik_adres_musteri_text"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="24dp"
+        android:hint="Açık Adres, Apartman"
+        app:layout_constraintBottom_toTopOf="@+id/yol_tarifi_musteri_text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/sokak_musteri_text" />
+
+    <EditText
+        android:id="@+id/yol_tarifi_musteri_text"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="30dp"
+        android:hint="Yol Tarifi (Örn. Kaykay parkının arkasındaki bina)"
+        android:maxLines="3"
+        app:layout_constraintBottom_toTopOf="@+id/adres_ekle_button_musteri"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/acik_adres_musteri_text"
+        app:layout_editor_absoluteX="0dp"
+        app:layout_editor_absoluteY="310dp" />
+
+    <Button
+        android:id="@+id/adres_ekle_button_musteri"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="26dp"
+        android:background="@color/colorPrimary"
+        android:onClick="dbAdresEkle"
+        android:text="Adresi Kaydet"
+        android:textColor="@color/textColor"
+        app:layout_constraintBottom_toTopOf="@+id/textView4"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/yol_tarifi_musteri_text"
+        app:layout_editor_absoluteX="0dp"
+        app:layout_editor_absoluteY="440dp" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimaryDark"
+        android:text="Şuanki Adres"
+        android:textAlignment="center"
+        android:textAllCaps="true"
+        android:textColor="@color/textColor"
+        app:layout_constraintBottom_toTopOf="@+id/guncel_adres_musteri_text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/adres_ekle_button_musteri" />
+
+    <TextView
+        android:id="@+id/guncel_adres_musteri_text"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="63dp"
+        android:text=""
+        android:textAlignment="center"
+        android:textSize="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView4" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -15,7 +15,8 @@
         android:background="@color/colorPrimaryDark"
         android:textColor="@color/textColor"
         android:text="Sipariş Ver"
-        android:textAllCaps="false"/>
+        android:textAllCaps="false"
+        android:onClick="siparisVerActivityGit"/>
     <Button
         android:id="@+id/sepet_musteri_button"
         android:layout_width="match_parent"
@@ -25,7 +26,8 @@
         android:background="@color/colorPrimaryDark"
         android:textColor="@color/textColor"
         android:text="Sepet"
-        android:textAllCaps="false"/>
+        android:textAllCaps="false"
+        android:onClick="sepetActivityGit"/>
     <Button
         android:id="@+id/gecmis_siparis_musteri_button"
         android:layout_width="match_parent"
@@ -35,7 +37,8 @@
         android:background="@color/colorPrimaryDark"
         android:textColor="@color/textColor"
         android:text="Geçmiş Siparişlerim"
-        android:textAllCaps="false"/>
+        android:textAllCaps="false"
+        android:onClick="gecmisSiparisActivityGit"/>
 
     <Button
         android:id="@+id/bilgi_guncelle_musteri_button"
@@ -45,8 +48,9 @@
         android:layout_column="0"
         android:background="@color/colorPrimaryDark"
         android:textColor="@color/textColor"
-        android:text="Bilgilerimi Güncelle/Değiştir"
-        android:textAllCaps="false"/>
+        android:text="Adresimi Güncelle/Değiştir"
+        android:textAllCaps="false"
+        android:onClick="musteriBilgileriGuncelleGit"/>
 
 
 
