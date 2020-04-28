@@ -1,6 +1,8 @@
 package com.yazilimmuhendisligi.yemeksiparis;
 
-public class Kullanici {
+import com.yazilimmuhendisligi.yemeksiparis.ui_musteri.SiparisVerActivity.UrunListelemeActivity_Siparis;
+
+public class Kullanici  {
     private String email, UID, yetkiID;
 
     public String getEmail() {

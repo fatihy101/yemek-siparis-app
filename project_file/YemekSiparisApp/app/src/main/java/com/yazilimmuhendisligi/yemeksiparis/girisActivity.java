@@ -81,6 +81,12 @@ public class girisActivity extends AppCompatActivity {
 
     }
 
+public void testButonu(View view)
+{
+    Intent intent = new Intent(this, musteriActivity.class);
+    startActivity(intent);
+
+}
 
     public void yetkiVerisiniAl()
     {
