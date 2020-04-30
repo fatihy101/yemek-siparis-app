@@ -19,7 +19,7 @@
 
     <TextView
         android:id="@+id/urun_fiyat_liste"
-        android:layout_width="wrap_content"
+        android:layout_width="65dp"
         android:layout_height="wrap_content"
         android:textSize="20sp"
         android:layout_row="0"
@@ -36,12 +36,14 @@
     <Button
         android:id="@+id/urun_azalt"
         android:text="-"
-        android:layout_height="33dp"
+        android:layout_height="34dp"
         android:layout_width="30dp"
         android:layout_row="0"
         android:layout_column="2"
+        android:paddingTop="3dp"
         android:background="@android:color/holo_red_light"
         android:textColor="@color/textColor"
+        android:paddingBottom="1.5dp"
 
         />
 
@@ -62,12 +64,14 @@
     <Button
         android:id="@+id/urun_arttir"
         android:text="+"
-        android:layout_height="33dp"
+        android:paddingTop="3dp"
+        android:layout_height="34dp"
         android:layout_width="30dp"
         android:layout_row="0"
         android:layout_column="4"
         android:background="@android:color/holo_red_light"
         android:textColor="@color/textColor"
+        android:paddingBottom="1.5dp"
         />
 
 </GridLayout>

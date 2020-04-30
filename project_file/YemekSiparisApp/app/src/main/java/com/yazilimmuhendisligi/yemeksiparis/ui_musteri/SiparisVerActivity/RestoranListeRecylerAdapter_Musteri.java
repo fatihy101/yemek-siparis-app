@@ -18,7 +18,7 @@ public class RestoranListeRecylerAdapter_Musteri extends RecyclerView.Adapter<Re
     private ArrayList<String> firmalar_isim;
     private ArrayList<String> firmalar_uid;
 
-
+//Constructor
     public RestoranListeRecylerAdapter_Musteri(ArrayList<String> firmalar_isim, ArrayList<String> firmalar_uid) {
         this.firmalar_isim = firmalar_isim;
         this.firmalar_uid = firmalar_uid;

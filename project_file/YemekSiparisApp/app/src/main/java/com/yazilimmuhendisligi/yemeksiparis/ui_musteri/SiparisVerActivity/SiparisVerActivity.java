@@ -60,25 +60,6 @@ public class SiparisVerActivity extends AppCompatActivity  {
 
     public void DBVeriAl()
     {
-       /* One time data gathering
-       db.collection("kullanici_bilgileri")
-                .whereEqualTo("yetki_id","2")
-                .get()
-                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-                    @Override
-                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                        if (task.isSuccessful()) {
-                            for (QueryDocumentSnapshot document : task.getResult()) {
-                            firmalar_isim.add((String) document.get("firma_adi"));
-                            firmalar_uid.add(document.getId());
-                            }
-
-
-                        } else
-                            Toast.makeText(SiparisVerActivity.this, task.getException().getLocalizedMessage(), Toast.LENGTH_SHORT).show();
-                    }
-                });
-    */
 CollectionReference collectionReference  = db.collection("kullanici_bilgileri");
 collectionReference.whereEqualTo("yetki_id","2").addSnapshotListener(new EventListener<QuerySnapshot>() {
     @Override
