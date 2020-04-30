@@ -6,6 +6,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
@@ -22,6 +24,7 @@ import java.util.ArrayList;
 
 public class MusteriListeleAdmin extends AppCompatActivity {
     ListView listView;
+    ArrayAdapter ArrayAdapter;
     ArrayList<String> musteri_email;
     ArrayList<String> musteri_uid;
     FirebaseFirestore db;
@@ -36,6 +39,9 @@ public class MusteriListeleAdmin extends AppCompatActivity {
         db= FirebaseFirestore .getInstance();
         listView = findViewById(R.id.listview);
         DBVeriAL();
+
+
+
 
     }
 
@@ -57,10 +63,33 @@ public class MusteriListeleAdmin extends AppCompatActivity {
                 }
                 ArrayAdapter arrayAdapter = new ArrayAdapter(getApplicationContext(),android.R.layout.simple_list_item_1, musteri_email);
                 listView.setAdapter(arrayAdapter);
+                listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                       Intent Intent = new Intent(MusteriListeleAdmin.this,MusteriBilgileriGoruntule);
+                        Intent.putExtra("musteri_uid",musteri_uid.get(position));
+                        startActivity(Intent);
+                    }
+                });
+
+
             }
-        });
+
+        })
 
     }
+
+
+
+
+
+
+
+
+
+
+      }
+
 
 }
 

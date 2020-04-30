@@ -1,10 +1,11 @@
-<resources>
+<string>
     <string name="app_name">YemekSiparisApp</string>
     <string name="title_activity_musteri">musteri</string>
 
     <string name="title_musteri_ekrani_admin">Müşteriler</string>
     <string name="title_firma_ekrani_admin">Firmalar</string>
     <string name="title_diger">Diğer</string>
+
 
     <string name="title_restoran_liste_musteri">Restoranlar</string>
     <string name="title_sepet_musteri">Sepet</string>
