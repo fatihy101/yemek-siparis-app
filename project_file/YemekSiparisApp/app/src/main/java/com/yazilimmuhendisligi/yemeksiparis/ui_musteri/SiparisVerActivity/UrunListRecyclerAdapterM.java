@@ -40,11 +40,11 @@ public class UrunListRecyclerAdapterM extends RecyclerView.Adapter<UrunListRecyc
     }
 
     @Override
-    public void onBindViewHolder(@NonNull urunSatir holder, final int position) {
+    public void onBindViewHolder(@NonNull urunSatir holder, int position) {
         Log.d("Log", "onBindViewHolder: called");
         siparis = new Siparis();
         holder.sayac.setText("0");
-        siparis.setSayacTemp(holder.sayac);
+      if(holder.sayac!=null)  siparis.setSayacTemp(holder.sayac);
         holder.urun_ismi.setText(urun_isimleri.get(position));
         holder.fiyat.setText(urun_fiyatlar.get(position));
         //holder.sayac.setText(siparis.urunSay(urun_isimleri.get(position)));
@@ -52,7 +52,7 @@ public class UrunListRecyclerAdapterM extends RecyclerView.Adapter<UrunListRecyc
             @Override
             public void onClick(View v) {
         //siparis.sepettenUrunCikar(urun_isimleri.get(position),urun_fiyatlar.get(position));
-            siparis.getSayacTemp().setText(Integer.parseInt((String) siparis.getSayacTemp().getText())-1);
+            //siparis.getSayacTemp().get().setText("5");
             }
         });
 
@@ -60,7 +60,7 @@ public class UrunListRecyclerAdapterM extends RecyclerView.Adapter<UrunListRecyc
             @Override
             public void onClick(View v) {
          //siparis.sepeteUrunEkle(urun_isimleri.get(position),urun_fiyatlar.get(position));
-                siparis.getSayacTemp().setText(Integer.parseInt((String) siparis.getSayacTemp().getText())+1);
+               // siparis.getSayacTemp().setText(Integer.parseInt((String) siparis.getSayacTemp().getText())+1);
 
             }
         });

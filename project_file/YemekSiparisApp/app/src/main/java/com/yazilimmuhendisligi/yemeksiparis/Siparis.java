@@ -7,14 +7,14 @@ import java.util.ArrayList;
 public class Siparis {
      ArrayList<String> sepetteki_urunler;
      ArrayList<String> sepetteki_fiyatlar;
-     TextView sayacTemp;
+     ArrayList<TextView> sayacTemp;
 
-    public TextView getSayacTemp() {
+    public ArrayList<TextView> getSayacTemp() {
         return sayacTemp;
     }
 
     public void setSayacTemp(TextView sayacTemp) {
-        this.sayacTemp = sayacTemp;
+        this.sayacTemp.add(sayacTemp);
     }
 
     public int urunSay(String theUrun)

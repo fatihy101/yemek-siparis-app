@@ -13,6 +13,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.yazilimmuhendisligi.yemeksiparis.R;
 import com.yazilimmuhendisligi.yemeksiparis.girisActivity;
 import com.yazilimmuhendisligi.yemeksiparis.ui_admin.FirmaListeleAdmin.FirmaListeleAdmin;
+import com.yazilimmuhendisligi.yemeksiparis.ui_admin.MusteriListeleAdmin.MusteriListeleAdmin;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
@@ -39,6 +40,12 @@ public void firmalariListeleButton(View view)
     startActivity(intent);
 }
 
+
+public void musteriListeleButton(View view)
+{
+    Intent intent = new Intent(getApplicationContext(), MusteriListeleAdmin.class);
+    startActivity(intent);
+}
     //region Sağ üstte açılan menü için metotlar
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
