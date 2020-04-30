@@ -9,6 +9,12 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.BaseAdapter;
+import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -31,8 +37,10 @@ public class UrunListelemeActivity_Siparis extends AppCompatActivity {
     String firmaUID;
     ArrayList<String> urun_isimleri;
     ArrayList<String> urun_fiyatlari;
-    RecyclerView recyclerView;
-    UrunListRecyclerAdapterM adapter;
+    ListView urunlerListView;
+    //RecyclerView recyclerView;
+    //UrunListRecyclerAdapterM adapter;
+    //Not: Bu class içerisinde recyclerview'a dair her şey deaktive edilmiştir.
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,9 +50,9 @@ public class UrunListelemeActivity_Siparis extends AppCompatActivity {
         firmaUID = getIntent().getStringExtra("firmaUID");
         urun_isimleri = new ArrayList<>();
         urun_fiyatlari = new ArrayList<>();
-        //RecyclerView
-        DBVeriAL();
+        urunlerListView = findViewById(R.id.listview_urunler);
 
+        DBVeriAL();
         Log.d("Arraysize", "from onCreate: " + urun_isimleri.size());
     }
 
@@ -67,37 +75,46 @@ public class UrunListelemeActivity_Siparis extends AppCompatActivity {
                     System.out.println(urun_isimleri.get(0) + " " + urun_fiyatlari.get(0)+ " " + urun_fiyatlari.size());
                     Log.d("array", "for:" + urun_isimleri.size());
                 }
-                adapter = new UrunListRecyclerAdapterM(urun_isimleri,urun_fiyatlari);
+               // ArrayAdapter arrayAdapter = new ArrayAdapter(getApplicationContext(),android.R.layout.simple_list_item_1, urun_isimleri);
+                CustomAdapter customAdapter = new CustomAdapter();
+                urunlerListView.setAdapter(customAdapter);
+
+                //RecyclerView
+                /*adapter = new UrunListRecyclerAdapterM(urun_isimleri,urun_fiyatlari);
                 recyclerView = findViewById(R.id.urunler_musteri_recyclerview);
                 recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
-                recyclerView.setAdapter(adapter);
+                recyclerView.setAdapter(adapter);*/
             }
         });
         Log.d("array", "method sonu " + urun_isimleri.size());
-       /* Tek seferlik veri almak için method TODO: Üst methodta sorun olursa buraya geç.
-        Log.d("array", "method başı");
 
-        db.collection("kullanici_bilgileri/"+firmaUID+"/menu")
-                .get()
-        .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-            @Override
-            public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                if (task.isSuccessful()) {
-                    for (QueryDocumentSnapshot document : task.getResult()) {
-                        urun_isimleri.add((String) document.get("urun_ismi"));
-                        urun_fiyatlari.add((String) document.get("fiyat"));
-                        Log.d("array", "for'un içi " + urun_isimleri.size());
-                    }
-                    adapter = new UrunListRecyclerAdapterM(urun_isimleri,urun_fiyatlari);
-                    recyclerView = findViewById(R.id.urunler_musteri_recyclerview);
-                    recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
-                    recyclerView.setAdapter(adapter);
-                }
-                else
-                    Toast.makeText(UrunListelemeActivity_Siparis.this, task.getException().getLocalizedMessage(), Toast.LENGTH_SHORT).show();
-            }
-        });
-        Log.d("array", "method sonu " + urun_isimleri.size());
-*/
     }
+   class CustomAdapter extends BaseAdapter
+   {
+
+       @Override
+       public int getCount() {
+           return urun_fiyatlari.size();
+       }
+
+       @Override
+       public Object getItem(int position) {
+           return null;
+       }
+
+       @Override
+       public long getItemId(int position) {
+           return 0;
+       }
+
+       @Override
+       public View getView(int position, View convertView, ViewGroup parent) {
+           convertView = getLayoutInflater().inflate(R.layout.layout_custom_urun,null);
+           TextView urun_adi = findViewById(R.id.urun_adi_lv);
+           TextView urun_fiyat = findViewById(R.id.urun_fiyat_lv);
+           urun_adi.setText(urun_isimleri.get(position));
+           urun_fiyat.setText((urun_fiyatlari.get(position)));
+           return null;
+       }
+   }
 }

@@ -2,18 +2,20 @@ package com.yazilimmuhendisligi.yemeksiparis;
 
 import android.widget.TextView;
 
+import com.yazilimmuhendisligi.yemeksiparis.ui_musteri.SiparisVerActivity.UrunListRecyclerAdapterM;
+
 import java.util.ArrayList;
 
 public class Siparis {
      ArrayList<String> sepetteki_urunler;
      ArrayList<String> sepetteki_fiyatlar;
-     ArrayList<TextView> sayacTemp;
+     ArrayList<UrunListRecyclerAdapterM.urunSatir > sayacTemp;
 
-    public ArrayList<TextView> getSayacTemp() {
+    public ArrayList<UrunListRecyclerAdapterM.urunSatir> getSayacTemp() {
         return sayacTemp;
     }
 
-    public void setSayacTemp(TextView sayacTemp) {
+    public void setSayacTemp(UrunListRecyclerAdapterM.urunSatir  sayacTemp) {
         this.sayacTemp.add(sayacTemp);
     }
 

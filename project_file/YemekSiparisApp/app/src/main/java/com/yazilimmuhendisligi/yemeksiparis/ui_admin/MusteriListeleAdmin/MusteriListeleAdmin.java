@@ -66,31 +66,15 @@ public class MusteriListeleAdmin extends AppCompatActivity {
                 listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                     @Override
                     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                       Intent Intent = new Intent(MusteriListeleAdmin.this,MusteriBilgileriGoruntule);
+                       Intent Intent = new Intent(MusteriListeleAdmin.this,MusteriBilgileriGoruntule.class);
                         Intent.putExtra("musteri_uid",musteri_uid.get(position));
                         startActivity(Intent);
                     }
                 });
 
-
             }
-
-        })
+        });
 
     }
 
-
-
-
-
-
-
-
-
-
-      }
-
-
 }
-
-

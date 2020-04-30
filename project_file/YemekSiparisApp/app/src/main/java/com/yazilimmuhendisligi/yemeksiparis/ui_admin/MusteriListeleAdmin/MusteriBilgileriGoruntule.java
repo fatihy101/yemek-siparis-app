@@ -17,6 +17,6 @@ public class MusteriBilgileriGoruntule extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_musteri_bilgileri_goruntule);
         String musteri_uid = getIntent().getStringExtra("musteri_uid");
-
+        System.out.println(musteri_uid);
     }
 }

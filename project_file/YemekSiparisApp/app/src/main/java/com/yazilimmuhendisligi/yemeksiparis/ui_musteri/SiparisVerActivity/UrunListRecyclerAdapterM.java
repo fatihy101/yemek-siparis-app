@@ -20,7 +20,7 @@ import java.util.ArrayList;
 public class UrunListRecyclerAdapterM extends RecyclerView.Adapter<UrunListRecyclerAdapterM.urunSatir> {
     private ArrayList<String>  urun_isimleri;
     private ArrayList<String> urun_fiyatlar;
-    Siparis siparis;
+    //Siparis siparis;
 
 //Constructor
     public UrunListRecyclerAdapterM(ArrayList<String> urun_isimleri, ArrayList<String> urun_fiyatlar) {
@@ -40,30 +40,38 @@ public class UrunListRecyclerAdapterM extends RecyclerView.Adapter<UrunListRecyc
     }
 
     @Override
-    public void onBindViewHolder(@NonNull urunSatir holder, int position) {
+    public void onBindViewHolder(@NonNull final urunSatir holder, int position) {
         Log.d("Log", "onBindViewHolder: called");
-        siparis = new Siparis();
+        //siparis = new Siparis();
         holder.sayac.setText("0");
-      if(holder.sayac!=null)  siparis.setSayacTemp(holder.sayac);
+      // if(holder.sayac!=null)  siparis.setSayacTemp(holder);
         holder.urun_ismi.setText(urun_isimleri.get(position));
         holder.fiyat.setText(urun_fiyatlar.get(position));
         //holder.sayac.setText(siparis.urunSay(urun_isimleri.get(position)));
         holder.azalt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-        //siparis.sepettenUrunCikar(urun_isimleri.get(position),urun_fiyatlar.get(position));
-            //siparis.getSayacTemp().get().setText("5");
+          //      siparis.getSayacTemp().get(1).sayac.setText("5");
             }
         });
 
         holder.arttir.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                //FixMe!
          //siparis.sepeteUrunEkle(urun_isimleri.get(position),urun_fiyatlar.get(position));
                // siparis.getSayacTemp().setText(Integer.parseInt((String) siparis.getSayacTemp().getText())+1);
-
             }
         });
+
+    }
+
+    public void azaltM(View view)
+    {
+
+    }
+    public void arttirM(View view)
+    {
 
     }
 
