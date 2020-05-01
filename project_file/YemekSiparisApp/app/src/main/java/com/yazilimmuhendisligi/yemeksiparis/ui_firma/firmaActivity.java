@@ -12,6 +12,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.yazilimmuhendisligi.yemeksiparis.R;
 import com.yazilimmuhendisligi.yemeksiparis.girisActivity;
+import com.yazilimmuhendisligi.yemeksiparis.ui_firma.FirmaBilgileriGuncelle.FirmaBilgileriGuncelle;
 import com.yazilimmuhendisligi.yemeksiparis.ui_firma.GelenSiparis.GelenSiparisActivty;
 import com.yazilimmuhendisligi.yemeksiparis.ui_firma.UrunMenu.UrunMenu;
 
@@ -40,6 +41,12 @@ FirebaseAuth auth;
     public void restoranMenusuneGit(View view)
     {
         Intent intent = new Intent(getApplicationContext(), UrunMenu.class);
+        startActivity(intent);
+    }
+
+    public void firmaGuncelleGit(View view)
+    {
+        Intent intent = new Intent(getApplicationContext(), FirmaBilgileriGuncelle.class);
         startActivity(intent);
     }
 
