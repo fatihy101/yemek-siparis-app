@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -20,7 +21,7 @@ import java.util.ArrayList;
 public class UrunListRecyclerAdapterM extends RecyclerView.Adapter<UrunListRecyclerAdapterM.urunSatir> {
     private ArrayList<String>  urun_isimleri;
     private ArrayList<String> urun_fiyatlar;
-    //Siparis siparis;
+    Siparis siparis;
 
 //Constructor
     public UrunListRecyclerAdapterM(ArrayList<String> urun_isimleri, ArrayList<String> urun_fiyatlar) {
@@ -36,42 +37,28 @@ public class UrunListRecyclerAdapterM extends RecyclerView.Adapter<UrunListRecyc
         Log.d("AdapterMsg", "onCreateViewHolder: called ");
         LayoutInflater layoutInflater = LayoutInflater.from(parent.getContext());
         View view = layoutInflater.inflate(R.layout.satir_urun_liste,parent,false);
+        siparis = new Siparis();
         return new urunSatir(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull final urunSatir holder, int position) {
+    public void onBindViewHolder(@NonNull final urunSatir holder, final int position) {
         Log.d("Log", "onBindViewHolder: called");
         //siparis = new Siparis();
-        holder.sayac.setText("0");
+
       // if(holder.sayac!=null)  siparis.setSayacTemp(holder);
         holder.urun_ismi.setText(urun_isimleri.get(position));
-        holder.fiyat.setText(urun_fiyatlar.get(position));
+        holder.fiyat.setText(String.format("%s TL", urun_fiyatlar.get(position)));
         //holder.sayac.setText(siparis.urunSay(urun_isimleri.get(position)));
-        holder.azalt.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-          //      siparis.getSayacTemp().get(1).sayac.setText("5");
-            }
-        });
+
 
         holder.arttir.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //FixMe!
-         //siparis.sepeteUrunEkle(urun_isimleri.get(position),urun_fiyatlar.get(position));
-               // siparis.getSayacTemp().setText(Integer.parseInt((String) siparis.getSayacTemp().getText())+1);
+                //
+                Toast.makeText(v.getContext(), "Ürün sepete eklendi!: " + urun_isimleri.get(position), Toast.LENGTH_SHORT).show();
             }
         });
-
-    }
-
-    public void azaltM(View view)
-    {
-
-    }
-    public void arttirM(View view)
-    {
 
     }
 
@@ -81,16 +68,14 @@ public class UrunListRecyclerAdapterM extends RecyclerView.Adapter<UrunListRecyc
     }
 
     public class urunSatir extends RecyclerView.ViewHolder {
-        Button arttir, azalt;
-        TextView urun_ismi, fiyat, sayac;
+        Button arttir;
+        TextView urun_ismi, fiyat;
         public urunSatir(@NonNull View itemView) {
             super(itemView);
 
             arttir = itemView.findViewById(R.id.urun_arttir);
-            azalt = itemView.findViewById(R.id.urun_azalt);
             urun_ismi = itemView.findViewById(R.id.urun_ismi_liste);
             fiyat = itemView.findViewById(R.id.urun_fiyat_liste);
-            sayac = itemView.findViewById(R.id.urun_sayac);
 
         }
     }

@@ -43,6 +43,7 @@ public class RestoranListeRecylerAdapter_Musteri extends RecyclerView.Adapter<Re
             public void onClick(View v) {
                 Intent intent = new Intent(v.getContext(), UrunListelemeActivity_Siparis.class);
                 intent.putExtra("firmaUID",firmalar_uid.get(position));
+                intent.putExtra("firma_isim",firmalar_isim.get(position));
                  v.getContext().startActivity(intent);
             }
         });
