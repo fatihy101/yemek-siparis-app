@@ -16,7 +16,7 @@ public class firma_bilgileri_goruntule extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_firma_bilgileri_goruntule);
-        String firma_uid = getIntent().getStringExtra().getStringExtra("firma_uid");
+        String firma_uid = getIntent().getStringExtra("firma_uid");
         System.out.println(firma_uid);
 
     }

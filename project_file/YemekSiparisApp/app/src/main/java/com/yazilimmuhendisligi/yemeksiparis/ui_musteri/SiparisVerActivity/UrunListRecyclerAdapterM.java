@@ -11,6 +11,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.yazilimmuhendisligi.yemeksiparis.R;
@@ -21,6 +22,8 @@ import java.util.ArrayList;
 public class UrunListRecyclerAdapterM extends RecyclerView.Adapter<UrunListRecyclerAdapterM.urunSatir> {
     private ArrayList<String>  urun_isimleri;
     private ArrayList<String> urun_fiyatlar;
+    private ArrayList<String>  sepet_urun;
+    private ArrayList<String> sepet_fiyat;
     Siparis siparis;
 
 //Constructor
@@ -37,7 +40,9 @@ public class UrunListRecyclerAdapterM extends RecyclerView.Adapter<UrunListRecyc
         Log.d("AdapterMsg", "onCreateViewHolder: called ");
         LayoutInflater layoutInflater = LayoutInflater.from(parent.getContext());
         View view = layoutInflater.inflate(R.layout.satir_urun_liste,parent,false);
-        siparis = new Siparis();
+        sepet_fiyat = new ArrayList<>();
+        sepet_urun = new ArrayList<>();
+        siparis = new Siparis(sepet_urun,sepet_fiyat);
         return new urunSatir(view);
     }
 
@@ -55,8 +60,13 @@ public class UrunListRecyclerAdapterM extends RecyclerView.Adapter<UrunListRecyc
         holder.arttir.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //
-                Toast.makeText(v.getContext(), "Ürün sepete eklendi!: " + urun_isimleri.get(position), Toast.LENGTH_SHORT).show();
+                siparis.sepeteUrunEkle(urun_isimleri.get(position),urun_fiyatlar.get(position));
+                Toast.makeText(v.getContext(), urun_isimleri.get(position) +" sepete eklendi!", Toast.LENGTH_SHORT).show();
+            Intent intentData = new Intent("custom-message");
+            intentData.putExtra("sepetteki_urunler",siparis.getSepetteki_urunler());
+            intentData.putExtra("sepetteki_fiyatlar",siparis.getSepetteki_fiyatlar());
+            LocalBroadcastManager.getInstance(v.getContext()).sendBroadcast(intentData);
+            siparis.list();
             }
         });
 

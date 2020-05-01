@@ -9,34 +9,29 @@ import java.util.ArrayList;
 public class Siparis {
      ArrayList<String> sepetteki_urunler;
      ArrayList<String> sepetteki_fiyatlar;
-     ArrayList<UrunListRecyclerAdapterM.urunSatir > sayacTemp;
 
-    public ArrayList<UrunListRecyclerAdapterM.urunSatir> getSayacTemp() {
-        return sayacTemp;
+    public Siparis(ArrayList<String> sepetteki_urunler, ArrayList<String> sepetteki_fiyatlar) {
+        this.sepetteki_urunler = sepetteki_urunler;
+        this.sepetteki_fiyatlar = sepetteki_fiyatlar;
     }
 
-    public void setSayacTemp(UrunListRecyclerAdapterM.urunSatir  sayacTemp) {
-        this.sayacTemp.add(sayacTemp);
+    public ArrayList<String> getSepetteki_urunler() {
+        return sepetteki_urunler;
     }
 
-    public int urunSay(String theUrun)
-    {
-        int sayacUrun = 0;
-        if(sepetteki_urunler.contains(theUrun))
-        {
-            for(int i = 0; i<sepetteki_urunler.size();i++)
-            {
-              if(sepetteki_urunler.get(i).equals(theUrun))  sayacUrun++;
-            }
-            return sayacUrun;
-        }
-        else return 0;
+    public ArrayList<String> getSepetteki_fiyatlar() {
+        return sepetteki_fiyatlar;
     }
 
     public void sepeteUrunEkle(String urun, String fiyat)
     {
         sepetteki_urunler.add(urun);
         sepetteki_fiyatlar.add(fiyat);
+    }
+
+    public void list()
+    {
+     for (int i = 0; i < sepetteki_urunler.size(); i++) System.out.println(sepetteki_urunler.get(i) + "  " + getSepetteki_fiyatlar().get(i));
     }
 
     public void sepettenUrunCikar(String urun,String fiyat)

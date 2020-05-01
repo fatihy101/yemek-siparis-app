@@ -49,7 +49,7 @@ public class FirmaListeleAdmin extends AppCompatActivity {
     public void DBVeriAL()
     {
         Log.d("firma_isimleri", "DBVeriAL: içerideyim ");
-        CollectionReference collectionReference  = db.collection("firma_bilgileri");
+        CollectionReference collectionReference  = db.collection("kullanici_bilgileri");
         Log.d("firma_isimleri", "Collection reference initialized. ");
         collectionReference.whereEqualTo("yetki_id","2").addSnapshotListener(new EventListener<QuerySnapshot>() {
             @Override

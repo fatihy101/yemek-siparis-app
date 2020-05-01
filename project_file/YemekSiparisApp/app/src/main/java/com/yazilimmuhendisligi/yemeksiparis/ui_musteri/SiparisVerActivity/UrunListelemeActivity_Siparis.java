@@ -3,9 +3,14 @@ package com.yazilimmuhendisligi.yemeksiparis.ui_musteri.SiparisVerActivity;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
@@ -27,6 +32,7 @@ import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.yazilimmuhendisligi.yemeksiparis.R;
+import com.yazilimmuhendisligi.yemeksiparis.ui_musteri.Sepet.Sepet;
 
 import java.sql.Array;
 import java.sql.SQLOutput;
@@ -39,6 +45,8 @@ public class UrunListelemeActivity_Siparis extends AppCompatActivity {
     ArrayList<String> urun_fiyatlari;
     RecyclerView recyclerView;
     UrunListRecyclerAdapterM adapter;
+    ArrayList<String> price;
+    ArrayList<String> name;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,8 +61,29 @@ public class UrunListelemeActivity_Siparis extends AppCompatActivity {
 
         DBVeriAL();
         Log.d("Arraysize", "from onCreate: " + urun_isimleri.size());
+
+        LocalBroadcastManager.getInstance(this).registerReceiver(mMessageReceiver,
+                new IntentFilter("custom-message"));
     }
 
+    public BroadcastReceiver mMessageReceiver = new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            // Get extra data included in the Intent
+             name = intent.getStringArrayListExtra("sepetteki_urunler");
+             price = intent.getStringArrayListExtra("sepetteki_fiyatlar");
+            //Toast.makeText(getApplicationContext(),"from siparisVer:" + name +" "+price ,Toast.LENGTH_SHORT).show();
+        }
+    };
+
+    public void sepeteGit(View view)
+    {
+       // Log.d(TAG, "sepeteGit: ");
+            Intent intentSepet = new Intent(getApplicationContext(), Sepet.class);
+            intentSepet.putExtra("sepetteki_urunler",name);
+            intentSepet.putExtra("sepetteki_fiyatlar",price);
+            startActivity(intentSepet);
+    }
 
     public void DBVeriAL()
     {
