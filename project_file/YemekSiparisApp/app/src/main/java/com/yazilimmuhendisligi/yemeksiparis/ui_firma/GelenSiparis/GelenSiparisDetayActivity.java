@@ -22,6 +22,7 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.Timestamp;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.yazilimmuhendisligi.yemeksiparis.R;
 
@@ -122,7 +123,7 @@ public class GelenSiparisDetayActivity extends AppCompatActivity {
 
         System.out.println(getIntent().getStringExtra("SiparisId"));
 
-        Timestamp tarihSaat = new Timestamp(new Date(getIntent().getStringExtra("SiparisTarihSaat")));
+        //Timestamp tarihSaat = new Timestamp(new Date(getIntent().getStringExtra("SiparisTarihSaat")));
 
         Map<String, Object> durumBilgisiMap = new HashMap<>();
         durumBilgisiMap.put("firma_email",getIntent().getStringExtra("FirmaEmail"));
@@ -132,7 +133,7 @@ public class GelenSiparisDetayActivity extends AppCompatActivity {
         durumBilgisiMap.put("musteri_tel_no", getIntent().getStringExtra("MusteriTel"));
         durumBilgisiMap.put("toplam_fiyat", getIntent().getIntExtra("ToplamFiyat",0));
         durumBilgisiMap.put("urunler", getIntent().getStringExtra("SiparisUrunler"));
-        durumBilgisiMap.put("siparis_tarih_saat", tarihSaat );
+        durumBilgisiMap.put("siparis_tarih_saat", FieldValue.serverTimestamp());
 
         durumBilgisiMap.put("siparis_durum", "Hazırlanıyor");
 
@@ -143,6 +144,7 @@ public class GelenSiparisDetayActivity extends AppCompatActivity {
                 public void onSuccess(Void aVoid) {
                     Toast.makeText(GelenSiparisDetayActivity.this, "Durum başarıyla güncellendi.", Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(getApplicationContext(),GelenSiparisActivty.class);
+                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);// Açık olan tüm activity leri kapat
                     startActivity(intent);
                 }
             }).addOnFailureListener(new OnFailureListener() {

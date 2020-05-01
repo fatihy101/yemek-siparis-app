@@ -92,8 +92,6 @@ public class GelenSiparisActivty extends AppCompatActivity {
                         String siparisEdilenUrunler = data.get("urunler").toString();
 
                         Timestamp siparisTarih = (Timestamp) data.get("siparis_tarih_saat");
-                        sharedPreferencesTimestamp = getParent().getSharedPreferences("com.yazilimmuhendisligi.yemeksiparis.ui_firma.GelenSiparis",Context.MODE_PRIVATE);
-                        sharedPreferencesTimestamp.edit().put
 
                         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
                         String formatliSiparisTarihi= simpleDateFormat.format(siparisTarih.toDate());
