@@ -27,7 +27,7 @@
         android:layout_width="90dp"
         android:layout_height="35dp"
         android:layout_column="1"
-        android:background="@color/colorPrimaryDark"
+        android:background="@color/alternativeColor"
         android:paddingTop="0.7dp"
         android:textAlignment="center"
         android:paddingBottom="5.5dp"
