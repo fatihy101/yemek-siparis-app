@@ -12,6 +12,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.yazilimmuhendisligi.yemeksiparis.R;
 import com.yazilimmuhendisligi.yemeksiparis.girisActivity;
+import com.yazilimmuhendisligi.yemeksiparis.ui_firma.GelenSiparis.GelenSiparisActivty;
 import com.yazilimmuhendisligi.yemeksiparis.ui_firma.UrunMenu.UrunMenu;
 
 import androidx.annotation.NonNull;
@@ -64,4 +65,9 @@ FirebaseAuth auth;
         return super.onOptionsItemSelected(item);
     }
     //endregion
+
+    public void gelenSiparislerActivity (View view){
+        Intent intent = new Intent(getApplicationContext(), GelenSiparisActivty.class);
+        startActivity(intent);
+    }
 }

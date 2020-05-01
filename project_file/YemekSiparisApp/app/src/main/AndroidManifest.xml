@@ -9,14 +9,20 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ui_musteri.GecmisSiparisMusteri.GecmisSiparisMusteri"/>
-        <activity android:name=".ui_musteri.SiparisVerActivity.SiparisVerActivity" android:label="Sipariş Ver" />
+        <activity android:name=".ui_firma.GelenSiparis.GelenSiparisDetayActivity" android:label="Gelen Sipariş Detay Ekranı"></activity>
+        <activity android:name=".ui_musteri.GecmisSiparisMusteri.GecmisSiparisMusteri" />
+        <activity
+            android:name=".ui_musteri.SiparisVerActivity.SiparisVerActivity"
+            android:label="Sipariş Ver" />
         <activity android:name=".ui_musteri.Sepet.Sepet" />
         <activity android:name=".ui_musteri.MusteriBilgileriGuncelle.MusteriBilgileriGuncelle" />
         <activity android:name=".ui_firma.UrunMenu.UrunMenu" />
-        <activity android:name=".ui_firma.GelenSiparis.GelenSiparis" />
-        <activity android:name=".ui_firma.FirmaBilgileriGuncelle.FirmaBilgileriGuncelle"
-            android:label="Menüyü Güncelle"/>
+        <activity
+            android:name=".ui_firma.GelenSiparis.GelenSiparisActivty"
+            android:label="Gelen Sipariş Ekranı" />
+        <activity
+            android:name=".ui_firma.FirmaBilgileriGuncelle.FirmaBilgileriGuncelle"
+            android:label="Menüyü Güncelle" />
         <activity android:name=".ui_admin.MusteriListeleAdmin.MusteriListeleAdmin" />
         <activity android:name=".ui_admin.MusteriKaraliste.MusteriKaraliste" />
         <activity android:name=".ui_admin.FirmaKaraliste.FirmaKaraliste" />
