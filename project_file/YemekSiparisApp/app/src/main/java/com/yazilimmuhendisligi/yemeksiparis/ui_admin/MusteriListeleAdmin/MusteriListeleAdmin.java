@@ -24,7 +24,6 @@ import java.util.ArrayList;
 
 public class MusteriListeleAdmin extends AppCompatActivity {
     ListView listView;
-    ArrayAdapter ArrayAdapter;
     ArrayList<String> musteri_email;
     ArrayList<String> musteri_uid;
     FirebaseFirestore db;
@@ -68,6 +67,7 @@ public class MusteriListeleAdmin extends AppCompatActivity {
                     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                        Intent Intent = new Intent(MusteriListeleAdmin.this,MusteriBilgileriGoruntule.class);
                         Intent.putExtra("musteri_uid",musteri_uid.get(position));
+                        Intent.putExtra("musteri_email",musteri_email.get(position));
                         startActivity(Intent);
                     }
                 });

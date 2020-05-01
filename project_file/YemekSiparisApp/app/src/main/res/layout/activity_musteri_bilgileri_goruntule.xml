@@ -1,51 +1,69 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    tools:context=".ui_admin.MusteriListeleAdmin.MusteriBilgileriGoruntule">
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".ui_admin.MusteriListeleAdmin.MusteriBilgileriGoruntule">
 
-    <TextView
+
+        <TextView
+            android:id="@+id/textview_mail"
+
+            android:layout_width="417dp"
+            android:layout_height="29dp"
+            android:background="@android:color/holo_red_light"
+            android:text="mail"
+            android:textAlignment="center"
+            android:textAllCaps="true"
+            android:textColor="@color/textColor"
+            android:textSize="20sp" />
+
+        <TextView
         android:id="@+id/textview_soyisim"
-        android:layout_width="174dp"
-        android:layout_height="32dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/holo_red_light"
         android:text="soyisim"
-        app:layout_constraintBottom_toTopOf="@+id/textview_no"
-        app:layout_constraintStart_toStartOf="parent" />
+        android:textAlignment="center"
+        android:textAllCaps="true"
+        android:textColor="@color/textColor"
+        android:textSize="20sp"
+        />
 
     <TextView
         android:id="@+id/textview_isim"
-        android:layout_width="174dp"
-        android:layout_height="29dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_below="@+id/textview_mail"
-        android:layout_marginTop="32dp"
-        android:layout_marginBottom="32dp"
         android:layout_toStartOf="@id/textview_mail"
+        android:background="@android:color/holo_red_light"
         android:text="isim"
-        app:layout_constraintBottom_toTopOf="@+id/textview_no"
-        app:layout_constraintEnd_toEndOf="@+id/textview_soyisim"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
-
-    <TextView
-        android:id="@+id/textview_mail"
-        android:layout_width="417dp"
-        android:layout_height="29dp"
-        android:text="mail"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:textAlignment="center"
+        android:textAllCaps="true"
+        android:textColor="@color/textColor"
+        android:textSize="20sp"
+         />
 
     <TextView
         android:id="@+id/textview_no"
-        android:layout_width="174dp"
-        android:layout_height="43dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/holo_red_light"
         android:text="telno"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent" />
+        android:textAlignment="center"
+        android:textAllCaps="true"
+        android:textColor="@color/textColor"
+        android:textSize="20sp"
+        />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <Button
+        android:layout_marginTop="5dp"
+        android:background="@color/alternativeColor"
+        android:textColor="@color/textColor"
+        android:text="KAralisteye al"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end" />
+</LinearLayout>
