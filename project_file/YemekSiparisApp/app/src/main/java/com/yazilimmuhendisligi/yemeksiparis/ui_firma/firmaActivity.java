@@ -12,7 +12,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.yazilimmuhendisligi.yemeksiparis.R;
 import com.yazilimmuhendisligi.yemeksiparis.girisActivity;
-import com.yazilimmuhendisligi.yemeksiparis.ui_firma.FirmaBilgileriGuncelle.FirmaBilgileriGuncelle;
+import com.yazilimmuhendisligi.yemeksiparis.ui_firma.GelenSiparis.GelenSiparisActivty;
 import com.yazilimmuhendisligi.yemeksiparis.ui_firma.UrunMenu.UrunMenu;
 
 import androidx.annotation.NonNull;
@@ -42,11 +42,6 @@ FirebaseAuth auth;
         Intent intent = new Intent(getApplicationContext(), UrunMenu.class);
         startActivity(intent);
     }
-    public void firmaGuncelleGit(View view)
-    {
-        Intent intent = new Intent(getApplicationContext(), FirmaBilgileriGuncelle.class);
-        startActivity(intent);
-    }
 
     //region Sağ üstte açılan menü için metotlar
     @Override
@@ -70,4 +65,9 @@ FirebaseAuth auth;
         return super.onOptionsItemSelected(item);
     }
     //endregion
+
+    public void gelenSiparislerActivity (View view){
+        Intent intent = new Intent(getApplicationContext(), GelenSiparisActivty.class);
+        startActivity(intent);
+    }
 }
