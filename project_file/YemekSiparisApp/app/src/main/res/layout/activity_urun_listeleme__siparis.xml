@@ -31,7 +31,7 @@
         android:background="@color/alternativeColor"
         android:textColor="@color/textColor"
         android:text="Fiyat"
-        android:onClick="sepeteGit"
+
         android:textSize="18sp"
         android:layout_row="0"
         android:layout_column="2"
@@ -66,7 +66,7 @@
         android:layout_columnSpan="2"
     android:layout_column="1"
     android:text="Sepete Ekle "
-
+        android:onClick="sepeteGit"
         android:layout_gravity="bottom"/>
 
 </GridLayout>

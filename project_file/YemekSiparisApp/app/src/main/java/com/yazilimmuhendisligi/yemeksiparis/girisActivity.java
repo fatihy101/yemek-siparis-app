@@ -42,6 +42,7 @@ public class girisActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setTitle("Giriş Yap");
         setContentView(R.layout.activity_giris);
         email = findViewById(R.id.giris_email_text);
         parola = findViewById(R.id.giris_parola_text);
