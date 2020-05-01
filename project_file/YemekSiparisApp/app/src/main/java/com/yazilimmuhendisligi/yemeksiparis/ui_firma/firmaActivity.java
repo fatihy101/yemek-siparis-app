@@ -12,6 +12,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.yazilimmuhendisligi.yemeksiparis.R;
 import com.yazilimmuhendisligi.yemeksiparis.girisActivity;
+import com.yazilimmuhendisligi.yemeksiparis.ui_firma.FirmaBilgileriGuncelle.FirmaBilgileriGuncelle;
 import com.yazilimmuhendisligi.yemeksiparis.ui_firma.UrunMenu.UrunMenu;
 
 import androidx.annotation.NonNull;

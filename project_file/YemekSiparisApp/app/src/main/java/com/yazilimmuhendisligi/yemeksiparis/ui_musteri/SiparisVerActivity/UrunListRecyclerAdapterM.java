@@ -47,13 +47,12 @@ public class UrunListRecyclerAdapterM extends RecyclerView.Adapter<UrunListRecyc
     }
 
     @Override
-    public void onBindViewHolder(@NonNull final urunSatir holder, final int position) {
+    public void onBindViewHolder(@NonNull urunSatir holder, final int position) {
         Log.d("Log", "onBindViewHolder: called");
 
         holder.urun_ismi.setText(urun_isimleri.get(position));
         holder.fiyat.setText(String.format("%s TL", urun_fiyatlar.get(position)));
         //holder.sayac.setText(siparis.urunSay(urun_isimleri.get(position)));
-
 
         holder.arttir.setOnClickListener(new View.OnClickListener() {
             @Override

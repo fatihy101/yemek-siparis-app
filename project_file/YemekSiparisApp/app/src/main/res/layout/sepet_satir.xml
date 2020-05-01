@@ -1,17 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
     <TextView
-        android:id="@+id/sepet_isim"
+        android:id="@+id/urun_ismi_liste_2"
         android:layout_width="250dp"
         android:layout_height="35dp"
 
-        android:layout_marginBottom="568dp"
         android:background="@color/colorPrimaryDark"
         android:paddingTop="0.7dp"
         android:paddingBottom="5.5dp"
@@ -19,34 +17,37 @@
         android:textColor="@color/textColor"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/urun_fiyat_liste_2"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/sepet_fiyat"
+        android:id="@+id/urun_fiyat_liste_2"
         android:layout_width="90dp"
         android:layout_height="35dp"
         android:layout_column="1"
-        android:layout_marginBottom="568dp"
         android:background="@color/alternativeColor"
         android:paddingTop="0.7dp"
+        android:textAlignment="center"
         android:paddingBottom="5.5dp"
         android:text="10 TL"
-        android:textAlignment="center"
         android:textColor="@color/textColor"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/siparis_onayla_button"
+        app:layout_constraintEnd_toStartOf="@+id/urun_cikar"
+        app:layout_constraintStart_toEndOf="@+id/urun_ismi_liste_2"
         app:layout_constraintTop_toTopOf="parent" />
 
-
     <Button
-        android:id="@+id/siparis_onayla_button"
+        android:id="@+id/urun_cikar"
         android:layout_width="72dp"
         android:layout_height="35dp"
+
         android:background="@android:color/holo_red_light"
         android:text="Çıkar"
         android:textColor="@color/textColor"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

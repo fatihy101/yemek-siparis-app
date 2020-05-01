@@ -1,5 +1,6 @@
 package com.yazilimmuhendisligi.yemeksiparis.ui_musteri.Sepet;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -31,31 +32,35 @@ public class SepetAdapter extends RecyclerView.Adapter<SepetAdapter.sepetSatir> 
     }
 
     @Override
-    public void onBindViewHolder(@NonNull sepetSatir holder, int position) {
+    public void onBindViewHolder(@NonNull sepetSatir holder, final int position) {
     holder.urun_ismi.setText(urun_isimleri.get(position));
     holder.fiyat.setText(String.format("%s TL", urun_fiyatlar.get(position)));
 
-    holder.onayla.setOnClickListener(new View.OnClickListener() {
+    holder.cikar_button.setOnClickListener(new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-
+            urun_isimleri.remove(position);
+            urun_fiyatlar.remove(position);
+            System.out.println(urun_isimleri);
+            notifyDataSetChanged();
         }
     });
     }
 
     @Override
     public int getItemCount() {
-        return urun_fiyatlar.size();
+
+        return urun_isimleri.size();
     }
 
     public class sepetSatir extends RecyclerView.ViewHolder {
-        Button onayla;
+        Button cikar_button;
         TextView urun_ismi, fiyat;
         public sepetSatir(@NonNull View itemView) {
             super(itemView);
-            onayla = itemView.findViewById(R.id.siparis_onayla_button);
-            urun_ismi = itemView.findViewById(R.id.sepet_isim);
-            fiyat  =itemView.findViewById(R.id.sepet_fiyat);
+            cikar_button = itemView.findViewById(R.id.urun_cikar);
+            urun_ismi = itemView.findViewById(R.id.urun_ismi_liste_2);
+            fiyat  =itemView.findViewById(R.id.urun_fiyat_liste_2);
 
         }
     }

@@ -15,7 +15,7 @@ public class Sepet extends AppCompatActivity {
     ArrayList<String> sepet_urunler;
     ArrayList<String> sepet_fiyatlar;
     RecyclerView recyclerView;
-    UrunListRecyclerAdapterM adapter;
+    SepetAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,8 +25,7 @@ public class Sepet extends AppCompatActivity {
          sepet_urunler  = getIntent().getStringArrayListExtra("sepetteki_urunler");
          sepet_fiyatlar = getIntent().getStringArrayListExtra("sepetteki_fiyatlar");
         System.out.println(sepet_urunler + " " + sepet_fiyatlar);
-
-        adapter = new UrunListRecyclerAdapterM(sepet_urunler,sepet_fiyatlar);
+        adapter = new SepetAdapter(sepet_urunler,sepet_fiyatlar);
         recyclerView = findViewById(R.id.siparis_musteri_recyclerview);
         recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
         recyclerView.setAdapter(adapter);
