@@ -1,9 +1,112 @@
-<?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui_firma.FirmaBilgileriGuncelle.FirmaBilgileriGuncelle">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <Button
+        android:id="@+id/buton"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:background="@color/colorPrimary"
+        android:text="Firma Bilgisi Guncelle"
+        android:textColor="@color/textColor"></Button>
+
+    <Spinner
+        android:id="@+id/firma_spinner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/buton"
+        android:layout_marginTop="5dp"></Spinner>
+
+    <EditText
+        android:id="@+id/firma_semt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/firma_spinner"
+        android:layout_marginTop="10dp"
+        android:hint="Semt/Mahalle"></EditText>
+
+    <EditText
+        android:id="@+id/firma_sokak"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/firma_semt"
+        android:layout_marginTop="10dp"
+        android:hint="Sokak"></EditText>
+
+    <EditText
+        android:id="@+id/firma_acık_adres"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/firma_sokak"
+        android:layout_marginTop="10dp"
+        android:hint="Açık Adres"></EditText>
+
+    <EditText
+        android:id="@+id/firma_yol_tarifi"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/firma_acık_adres"
+        android:layout_marginTop="10dp"
+        android:hint="Yol tarifi"></EditText>
+
+    <EditText
+        android:id="@+id/firma_adi"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/firma_yol_tarifi"
+        android:layout_marginTop="10dp"
+        android:hint="Firma Adi"></EditText>
+
+    <EditText
+        android:id="@+id/firma_sahip"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/firma_adi"
+        android:hint="Firma Sahibi"></EditText>
+
+    <EditText
+        android:id="@+id/firma_telefon_numarası"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/firma_sahip"
+        android:hint="Telefon Numarası"></EditText>
+
+    <Button
+        android:id="@+id/kaydet"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/firma_telefon_numarası"
+        android:background="@color/colorPrimary"
+        android:onClick="firma_dbAdresEkle"
+        android:text="GÜNCELLE"
+        android:textColor="@color/textColor"></Button>
+
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="20dp"
+        android:layout_below="@+id/kaydet"
+        android:background="@color/colorPrimary"
+        android:text="Firma bilgilerini göster"
+        android:textColor="@color/textColor"
+        android:layout_marginTop="5dp"
+        android:id="@+id/denemeButon">
+
+    </Button>
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/denemeButon"
+        android:id="@+id/bilgiTxt">
+
+    </TextView>
+
+</RelativeLayout>

@@ -41,6 +41,11 @@ FirebaseAuth auth;
         Intent intent = new Intent(getApplicationContext(), UrunMenu.class);
         startActivity(intent);
     }
+    public void firmaGuncelleGit(View view)
+    {
+        Intent intent = new Intent(getApplicationContext(), FirmaBilgileriGuncelle.class);
+        startActivity(intent);
+    }
 
     //region Sağ üstte açılan menü için metotlar
     @Override
