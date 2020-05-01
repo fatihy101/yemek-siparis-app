@@ -38,7 +38,8 @@
         android:background="@color/colorPrimaryDark"
         android:textColor="@color/textColor"
         android:text="Firma Bilgisini Güncelle/Değiştir"
-        android:textAllCaps="false"/>
+        android:textAllCaps="false"
+        android:onClick="firmaGuncelleGit"/>
 
 
 </GridLayout>
