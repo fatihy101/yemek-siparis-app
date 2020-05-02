@@ -7,6 +7,9 @@
     tools:context=".ui_firma.firmaActivity">
 
     <Button
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="7dp"
+        android:layout_marginRight="7dp"
         android:id="@+id/gelen_siparis_firma_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -19,6 +22,9 @@
         android:textColor="@color/textColor" />
 
     <Button
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="7dp"
+        android:layout_marginRight="7dp"
         android:id="@+id/menu_guncelle_firma_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -31,6 +37,9 @@
         android:onClick="restoranMenusuneGit"/>
 
     <Button
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="7dp"
+        android:layout_marginRight="7dp"
         android:id="@+id/bilgi_guncelle_firma_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

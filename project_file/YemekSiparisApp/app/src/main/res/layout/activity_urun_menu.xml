@@ -1,29 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui_firma.UrunMenu.UrunMenu">
 
     <TextView
         android:id="@+id/textView"
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_row="0"
+        android:layout_column="0"
+        android:layout_columnSpan="5"
         android:background="@color/colorPrimaryDark"
+        android:fontFamily="sans-serif-black"
         android:text="Ürün Ekle"
         android:textAlignment="center"
         android:textAllCaps="true"
         android:textColor="@color/textColor"
-        android:fontFamily="sans-serif-black"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/urun_ismi_ekle"
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_row="1"
+        android:layout_column="0"
+        android:layout_columnSpan="5"
         android:layout_marginTop="37dp"
         android:hint="Ürün ismi"
         app:layout_constraintEnd_toEndOf="parent"
@@ -32,14 +39,18 @@
 
     <EditText
         android:id="@+id/urun_fiyat_ekle"
-        android:layout_width="0dp"
+        android:layout_width="207dp"
         android:layout_height="wrap_content"
+        android:layout_row="2"
+        android:layout_column="0"
         android:layout_marginTop="15dp"
         android:layout_marginEnd="21dp"
         android:hint="Fiyat"
+        android:inputType="number"
         app:layout_constraintEnd_toStartOf="@+id/urun_ekle_onay_button"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/urun_ismi_ekle" />
+        app:layout_constraintTop_toBottomOf="@+id/urun_ismi_ekle"
+        />
 
     <Button
         android:id="@+id/urun_ekle_onay_button"
@@ -48,6 +59,8 @@
         android:layout_marginTop="11dp"
         android:layout_marginEnd="186dp"
         android:background="@color/colorPrimaryDark"
+        android:layout_row="2"
+        android:layout_column="1"
         android:text="EKLE"
         android:textColor="@color/textColor"
         app:layout_constraintEnd_toEndOf="parent"
@@ -57,27 +70,31 @@
 
     <TextView
         android:id="@+id/textView2"
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_row="3"
+        android:layout_column="0"
+        android:layout_columnSpan="4"
         android:layout_marginTop="16dp"
         android:background="@color/colorPrimaryDark"
+        android:fontFamily="sans-serif-black"
         android:text="Menüdeki Ürünler"
         android:textAlignment="center"
         android:textAllCaps="true"
         android:textColor="@color/textColor"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/urun_fiyat_ekle"
-        android:fontFamily="sans-serif-black"/>
+        app:layout_constraintTop_toBottomOf="@+id/urun_fiyat_ekle" />
 
     <!--Buradan sonrası yazılacak-->
    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerView_menu_guncelle"
-        android:layout_width="0dp"
-        android:layout_height="426dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView2" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        android:id="@+id/recyclerView_menu_guncelle"
+        android:layout_width="match_parent"
+        android:layout_height="500dp"
+       android:layout_columnSpan="5"
+       android:layout_row="4"
+       android:layout_column="0"/>
+
+
+</GridLayout>

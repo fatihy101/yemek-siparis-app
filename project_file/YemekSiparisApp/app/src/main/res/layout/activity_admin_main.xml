@@ -7,6 +7,9 @@
     tools:context=".ui_admin.adminActivity">
 
     <Button
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="7dp"
+        android:layout_marginRight="7dp"
         android:id="@+id/firma_listele_admin"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -20,6 +23,9 @@
         />
 
     <Button
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="7dp"
+        android:layout_marginRight="7dp"
         android:id="@+id/musteri_listele_admin"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -33,6 +39,9 @@
         />
 
     <Button
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="7dp"
+        android:layout_marginRight="7dp"
         android:id="@+id/karaliste_musteri"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -44,6 +53,9 @@
         android:background="@color/colorPrimaryDark"/>
 
     <Button
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="7dp"
+        android:layout_marginRight="7dp"
         android:id="@+id/karaliste_firma"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

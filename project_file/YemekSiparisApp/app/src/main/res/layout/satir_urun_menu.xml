@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="5dp">
+
+    <TextView
+        android:id="@+id/urun_ismi_firma_guncelle"
+        android:layout_width="252dp"
+        android:layout_height="35dp"
+
+        android:background="@color/colorPrimaryDark"
+        android:paddingTop="0.7dp"
+        android:paddingBottom="5.5dp"
+        android:text="Ürün İsmi"
+        android:textColor="@color/textColor"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/urun_fiyat_firma_guncelle"
+        android:layout_width="81dp"
+        android:layout_height="35dp"
+        android:layout_column="1"
+        android:background="@color/alternativeColor"
+        android:paddingTop="0.7dp"
+        android:paddingBottom="5.5dp"
+        android:text="10 TL"
+        android:textAlignment="center"
+        android:textColor="@color/textColor"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/urun_sil_firma"
+        app:layout_constraintStart_toEndOf="@+id/urun_ismi_firma_guncelle"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/urun_sil_firma"
+        android:layout_width="81dp"
+        android:layout_height="35dp"
+        android:background="@android:color/holo_red_light"
+        android:text="sil"
+        android:textColor="@color/textColor"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

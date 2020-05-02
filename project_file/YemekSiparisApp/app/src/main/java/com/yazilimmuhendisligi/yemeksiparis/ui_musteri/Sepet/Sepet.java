@@ -146,7 +146,7 @@ public class Sepet extends AppCompatActivity {
 
               sehir = (String) documentSnapshot.get("sehir");
               adres = documentSnapshot.get("acik_adres") + ", " + documentSnapshot.get("sokak")
-                      + ", " + documentSnapshot.get("semt") + "\nYol Tarifi" + documentSnapshot.get("yol_tarifi");
+                      + ", " + documentSnapshot.get("semt") + "\nYol Tarifi: " + documentSnapshot.get("yol_tarifi");
                 MusteriBilgiAl();
 
             }
