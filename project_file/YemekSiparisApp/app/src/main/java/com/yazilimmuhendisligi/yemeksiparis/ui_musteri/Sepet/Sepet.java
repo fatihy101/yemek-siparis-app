@@ -29,6 +29,7 @@ import com.google.firebase.firestore.ServerTimestamp;
 import com.yazilimmuhendisligi.yemeksiparis.R;
 import com.yazilimmuhendisligi.yemeksiparis.ui_musteri.SiparisVerActivity.SiparisVerActivity;
 import com.yazilimmuhendisligi.yemeksiparis.ui_musteri.SiparisVerActivity.UrunListRecyclerAdapterM;
+import com.yazilimmuhendisligi.yemeksiparis.ui_musteri.musteriActivity;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -92,7 +93,7 @@ public class Sepet extends AppCompatActivity {
                 }).setNegativeButton("İptal", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-
+                        Toast.makeText(Sepet.this, "İptal Edildi", Toast.LENGTH_SHORT).show();
                     }
                 });
                 AlertDialog alert = builder.create();
@@ -127,6 +128,8 @@ public class Sepet extends AppCompatActivity {
                         @Override
                         public void onComplete(@NonNull Task<DocumentReference> task) {
                             Toast.makeText(Sepet.this, "Siparişiniz başarıyla verildi!", Toast.LENGTH_SHORT).show();
+                            Intent intent = new Intent(getApplicationContext(), musteriActivity.class);
+                            startActivity(intent);
                         }
                     });
         }
