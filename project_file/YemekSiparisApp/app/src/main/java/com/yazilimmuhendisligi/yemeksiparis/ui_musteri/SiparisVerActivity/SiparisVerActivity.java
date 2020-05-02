@@ -39,6 +39,7 @@ public class SiparisVerActivity extends AppCompatActivity  {
     RecyclerView recyclerView;
     ArrayList<String> firmalar_isim;
     ArrayList<String> firmalar_uid;
+    ArrayList<String> firmalar_email;
     RestoranListeRecylerAdapter_Musteri restoranlistAdapter;
 
     @Override
@@ -48,9 +49,10 @@ public class SiparisVerActivity extends AppCompatActivity  {
         db = FirebaseFirestore.getInstance();
         firmalar_isim = new ArrayList<>();
         firmalar_uid = new ArrayList<>();
+        firmalar_email = new ArrayList<>();
         //RecylerView
         DBVeriAl();
-        restoranlistAdapter = new RestoranListeRecylerAdapter_Musteri(firmalar_isim,firmalar_uid);
+        restoranlistAdapter = new RestoranListeRecylerAdapter_Musteri(firmalar_isim,firmalar_uid,firmalar_email);
         recyclerView = findViewById(R.id.recyclerView_restoran_listele_musteri);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(restoranlistAdapter);
@@ -70,6 +72,8 @@ collectionReference.whereEqualTo("yetki_id","2").addSnapshotListener(new EventLi
            {
                firmalar_isim.add((String) document.get("firma_adi"));
                firmalar_uid.add(document.getId());
+               firmalar_email.add((String) document.get("email"));
+
 
                restoranlistAdapter.notifyDataSetChanged(); //Adapter'a bilgilerin değiştiğini bildirmek
 

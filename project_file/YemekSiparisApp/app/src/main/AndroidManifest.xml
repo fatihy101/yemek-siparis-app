@@ -17,6 +17,7 @@
         <activity android:name=".ui_musteri.Sepet.Sepet" />
         <activity android:name=".ui_musteri.MusteriBilgileriGuncelle.MusteriBilgileriGuncelle" />
         <activity android:name=".ui_firma.UrunMenu.UrunMenu" />
+        <activity android:name=".ui_musteri.SiparisVerActivity.UrunListelemeActivity_Siparis" />
         <activity
             android:name=".ui_firma.GelenSiparis.GelenSiparisActivty"
             android:label="Gelen Sipariş Ekranı" />

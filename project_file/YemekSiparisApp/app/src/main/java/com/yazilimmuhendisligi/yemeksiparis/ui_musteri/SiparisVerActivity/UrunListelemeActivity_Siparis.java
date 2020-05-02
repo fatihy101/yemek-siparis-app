@@ -40,7 +40,7 @@ import java.util.ArrayList;
 
 public class UrunListelemeActivity_Siparis extends AppCompatActivity {
     FirebaseFirestore db;
-    String firmaUID,firmaTitle;
+    String firmaUID,firmaTitle,firma_email;
     ArrayList<String> urun_isimleri;
     ArrayList<String> urun_fiyatlari;
     RecyclerView recyclerView;
@@ -54,6 +54,8 @@ public class UrunListelemeActivity_Siparis extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_urun_listeleme__siparis);
         firmaUID = getIntent().getStringExtra("firmaUID");
+        firma_email = getIntent().getStringExtra("firma_email");
+        Log.d("Bos UID", "onCreate: " + firmaUID);
         firmaTitle = getIntent().getStringExtra("firma_isim");
         setTitle(firmaTitle);
         urun_isimleri = new ArrayList<>();
@@ -82,6 +84,7 @@ public class UrunListelemeActivity_Siparis extends AppCompatActivity {
             Intent intentSepet = new Intent(getApplicationContext(), Sepet.class);
             intentSepet.putExtra("sepetteki_urunler",name);
             intentSepet.putExtra("sepetteki_fiyatlar",price);
+            intentSepet.putExtra("firma_email",firma_email);
             startActivity(intentSepet);
     }
 

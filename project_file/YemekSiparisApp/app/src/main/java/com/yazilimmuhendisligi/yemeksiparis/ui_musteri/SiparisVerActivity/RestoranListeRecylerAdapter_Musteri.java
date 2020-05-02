@@ -17,11 +17,13 @@ import java.util.ArrayList;
 public class RestoranListeRecylerAdapter_Musteri extends RecyclerView.Adapter<RestoranListeRecylerAdapter_Musteri.RestoranSatir> {
     private ArrayList<String> firmalar_isim;
     private ArrayList<String> firmalar_uid;
+    private ArrayList<String> firma_email;
 
 //Constructor
-    public RestoranListeRecylerAdapter_Musteri(ArrayList<String> firmalar_isim, ArrayList<String> firmalar_uid) {
+    public RestoranListeRecylerAdapter_Musteri(ArrayList<String> firmalar_isim, ArrayList<String> firmalar_uid, ArrayList<String> firma_email) {
         this.firmalar_isim = firmalar_isim;
         this.firmalar_uid = firmalar_uid;
+        this.firma_email = firma_email;
     }
 
     @NonNull
@@ -44,6 +46,7 @@ public class RestoranListeRecylerAdapter_Musteri extends RecyclerView.Adapter<Re
                 Intent intent = new Intent(v.getContext(), UrunListelemeActivity_Siparis.class);
                 intent.putExtra("firmaUID",firmalar_uid.get(position));
                 intent.putExtra("firma_isim",firmalar_isim.get(position));
+                intent.putExtra("firma_email",firma_email.get(position));
                  v.getContext().startActivity(intent);
             }
         });
