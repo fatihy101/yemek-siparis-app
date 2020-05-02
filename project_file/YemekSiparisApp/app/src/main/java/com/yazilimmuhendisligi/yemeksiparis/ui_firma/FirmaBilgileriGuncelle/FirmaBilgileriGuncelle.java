@@ -31,7 +31,7 @@ public class FirmaBilgileriGuncelle extends AppCompatActivity implements Adapter
     EditText semt, sokak, acikAdres, yolTarifi,firmaAdi,firmaSahibi,firmaTelefon;
     FirebaseFirestore db;
     FirebaseAuth auth;
-    TextView guncelAdres,bilgiTxt;
+    TextView guncelAdres ,bilgiTxt;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -70,7 +70,7 @@ public class FirmaBilgileriGuncelle extends AppCompatActivity implements Adapter
         adresBilgisiMap.put("acik_adres",acikAdres.getText().toString());
         adresBilgisiMap.put("yol_tarifi",yolTarifi.getText().toString());
 
-        DocumentReference adresRef = db.document("kullanici_bilgileri/"+auth.getUid()+"/firmaBilgi/firmaAdres");
+        DocumentReference adresRef = db.document("kullanici_bilgileri/"+auth.getUid()+"/adres/birincil_adres");
         if(adresRef.get().isSuccessful())
         {
             adresRef.set(adresBilgisiMap).addOnSuccessListener(new OnSuccessListener<Void>() {
@@ -100,7 +100,7 @@ public class FirmaBilgileriGuncelle extends AppCompatActivity implements Adapter
     }
     public void firmaBilgiAl()
     {
-        final DocumentReference adresRef = db.document("kullanici_bilgileri/"+auth.getUid()+"/firmaBilgi/firmaAdres");
+        final DocumentReference adresRef = db.document("kullanici_bilgileri/"+auth.getUid()+"/adres/birincil_adres");
         adresRef.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
             @Override
             public void onSuccess(DocumentSnapshot documentSnapshot) {

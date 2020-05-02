@@ -22,16 +22,17 @@ import com.yazilimmuhendisligi.yemeksiparis.ui_firma.firmaActivity;
 import com.yazilimmuhendisligi.yemeksiparis.ui_musteri.musteriActivity;
 
 public class girisActivity extends AppCompatActivity {
-/* Authentication ID'leri
-* 1 = Musteri
-* 2 = Firma
-* 3 = Admin*/
+    /* Authentication ID'leri
+     * 1 = Musteri
+     * 2 = Firma
+     * 3 = Admin*/
 
     EditText email, parola;
     private FirebaseAuth mAuth;
     private FirebaseFirestore firebaseFirestore;
     Kullanici kullanici;
     FirebaseUser currentUser;
+    boolean karalisteMi = false;
 
     @Override
     protected void onStart() {
@@ -60,7 +61,8 @@ public class girisActivity extends AppCompatActivity {
     }
 
     public void YetkiyeGoreYonlendirme(String idNo)
-    {Intent intent;
+    {   Intent intent;
+        if(karalisteMi) idNo = "4";
         System.out.println("YetkiyeGoreYonlendirme.class'a ulaşıldı... " + idNo);
         switch (idNo)
         {
@@ -69,12 +71,15 @@ public class girisActivity extends AppCompatActivity {
                 startActivity(intent);
                 break;
             case "2":
-                 intent = new Intent(girisActivity.this, firmaActivity.class);
+                intent = new Intent(girisActivity.this, firmaActivity.class);
                 startActivity(intent);
                 break;
             case "3":
-                 intent = new Intent(girisActivity.this, adminActivity.class);
+                intent = new Intent(girisActivity.this, adminActivity.class);
                 startActivity(intent);
+                break;
+            case "4":
+                Toast.makeText(this, "Admin tarafından süresiz bir şekilde karalisteye alındığınız için girişiniz mümkün değil!", Toast.LENGTH_LONG).show();
                 break;
             default:
                 Toast.makeText(this, "Something went wrong", Toast.LENGTH_SHORT).show();
@@ -82,25 +87,19 @@ public class girisActivity extends AppCompatActivity {
 
     }
 
-public void testButonu(View view)
-{
-    Intent intent = new Intent(this, musteriActivity.class);
-    startActivity(intent);
-
-}
 
     public void yetkiVerisiniAl()
     {
 
-        DocumentReference docRef = firebaseFirestore.collection("kullanici_bilgileri").document(mAuth.getCurrentUser().getUid());
+        final DocumentReference docRef = firebaseFirestore.collection("kullanici_bilgileri").document(mAuth.getCurrentUser().getUid());
         docRef.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
             @Override
             public void onSuccess(DocumentSnapshot documentSnapshot) {
                 if(documentSnapshot.exists())
                 {
-                 String yetkiID = documentSnapshot.getString("yetki_id");
-
-                 YetkiyeGoreYonlendirme(yetkiID);
+                    String yetkiID = documentSnapshot.getString("yetki_id");
+                    karalisteMi = documentSnapshot.getBoolean("Blacklist");
+                    YetkiyeGoreYonlendirme(yetkiID);
                 }
                 else
                 {
