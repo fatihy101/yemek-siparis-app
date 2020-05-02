@@ -34,11 +34,11 @@ public class FirmaListeleAdmin extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_firma_listele_admin);
-        setTitle("Müşterileri Listele");
+        setTitle("Firmaları Listele");
         firma_ad = new ArrayList<>();
         firma_uid = new ArrayList<>();
         db= FirebaseFirestore .getInstance();
-        listView = findViewById(R.id.listview);
+        listView = findViewById(R.id.listview22);
         DBVeriAL();
 
 
@@ -68,7 +68,7 @@ public class FirmaListeleAdmin extends AppCompatActivity {
 
                     @Override
                     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                        Intent Intent = new Intent(FirmaListeleAdmin.this,firma_bilgileri_goruntule.class);
+                        Intent Intent = new Intent(FirmaListeleAdmin.this, FirmaBilgileriGoruntule.class);
                         Intent.putExtra("firma_uid",firma_uid.get(position));
                         startActivity(Intent);
                     }

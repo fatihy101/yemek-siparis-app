@@ -12,7 +12,9 @@ import android.widget.Toast;
 import com.google.firebase.auth.FirebaseAuth;
 import com.yazilimmuhendisligi.yemeksiparis.R;
 import com.yazilimmuhendisligi.yemeksiparis.girisActivity;
+import com.yazilimmuhendisligi.yemeksiparis.ui_admin.FirmaKaraliste.FirmaKaraliste;
 import com.yazilimmuhendisligi.yemeksiparis.ui_admin.FirmaListeleAdmin.FirmaListeleAdmin;
+import com.yazilimmuhendisligi.yemeksiparis.ui_admin.MusteriKaraliste.MusteriKaraliste;
 import com.yazilimmuhendisligi.yemeksiparis.ui_admin.MusteriListeleAdmin.MusteriListeleAdmin;
 
 import androidx.annotation.NonNull;
@@ -33,7 +35,16 @@ public class adminActivity extends AppCompatActivity {
         auth = FirebaseAuth.getInstance();
 
     }
-
+    public  void  karaliste_firmaButton(View view)
+    {
+        Intent intent = new Intent(getApplicationContext(), FirmaKaraliste.class);
+        startActivity(intent);
+    }
+    public void karaliste_musteriButton(View view)
+    {
+        Intent intent = new Intent(getApplicationContext(), MusteriKaraliste.class);
+        startActivity(intent);
+    }
 public void firmalariListeleButton(View view)
 {
     Intent intent = new Intent(getApplicationContext(), FirmaListeleAdmin.class);

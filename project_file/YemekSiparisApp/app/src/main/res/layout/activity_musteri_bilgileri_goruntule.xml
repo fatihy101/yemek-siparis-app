@@ -59,11 +59,27 @@
         />
 
     <Button
-        android:layout_marginTop="5dp"
-        android:background="@color/alternativeColor"
-        android:textColor="@color/textColor"
-        android:text="KAralisteye al"
+        android:id="@+id/buton12"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="end" />
+        android:layout_gravity="end"
+        android:layout_marginTop="5dp"
+        android:background="@color/alternativeColor"
+        android:text="KAralisteye al"
+        android:textColor="@color/textColor" />
+
+    <Button
+        android:id="@+id/button13"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:background="@color/alternativeColor"
+        android:text="Karalisteden Çıkar"
+        android:textColorLink="#DFC4C4" />
+
+    <TextView
+        android:id="@+id/textView66"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="TextView" />
 </LinearLayout>

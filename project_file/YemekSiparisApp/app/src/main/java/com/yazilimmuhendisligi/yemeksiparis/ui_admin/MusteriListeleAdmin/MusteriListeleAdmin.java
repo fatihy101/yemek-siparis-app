@@ -36,7 +36,7 @@ public class MusteriListeleAdmin extends AppCompatActivity {
         musteri_email = new ArrayList<>();
         musteri_uid = new ArrayList<>();
         db= FirebaseFirestore .getInstance();
-        listView = findViewById(R.id.listview);
+        listView = findViewById(R.id.listview22);
         DBVeriAL();
 
 
