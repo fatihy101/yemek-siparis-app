@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="3dp"
+    android:layout_marginTop="5dp"
+    android:layout_marginRight="3dp">
+
+    <TextView
+        android:id="@+id/icerik_gecmis_row"
+        android:layout_width="360dp"
+        android:layout_height="24dp"
+        android:background="@color/alternativeColor"
+        android:text="Urun İsimleri"
+        android:textColor="@color/textColor"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tutar_gecmis_row"
+        android:layout_width="50dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="6dp"
+        android:background="@color/colorPrimaryDark"
+        android:text="40 TL"
+        android:textColor="@color/textColor"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.857"
+        app:layout_constraintStart_toEndOf="@+id/icerik_gecmis_row"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/email_firma_gecmis_row"
+        android:layout_width="276dp"
+        android:layout_height="wrap_content"
+        android:background="@color/alternativeColor"
+        android:text="some_domain"
+        android:textColor="@color/textColor"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/icerik_gecmis_row" />
+
+    <TextView
+        android:id="@+id/durum_gecmis_row"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimaryDark"
+        android:text="DURUM_HOLDER"
+        android:textColor="@color/textColor"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/icerik_gecmis_row"
+        android:textAlignment="textEnd"/>
+</androidx.constraintlayout.widget.ConstraintLayout>

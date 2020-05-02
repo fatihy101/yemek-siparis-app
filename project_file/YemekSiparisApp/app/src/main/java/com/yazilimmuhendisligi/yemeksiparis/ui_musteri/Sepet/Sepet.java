@@ -117,7 +117,7 @@ public class Sepet extends AppCompatActivity {
             data_set.put("musteri_adres", adres);
             data_set.put("musteri_sehir",sehir);
             data_set.put("musteri_tel_no",tel_no);
-            data_set.put("siparis_durum","Yeni");
+            data_set.put("siparis_durum","Yeni Sipariş");
             data_set.put("toplam_fiyat", topla()); //int
             data_set.put("urunler",urunlerFormat());
             data_set.put("siparis_tarih_saat", FieldValue.serverTimestamp());
