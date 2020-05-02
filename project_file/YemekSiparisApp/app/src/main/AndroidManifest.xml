@@ -9,20 +9,25 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ui_admin.FirmaListeleAdmin.FirmaBilgileriGoruntule"></activity>
+        <activity android:name=".ui_admin.FirmaListeleAdmin.FirmaListeleAdmin"></activity>
+        <activity android:name=".ui_admin.FirmaListeleAdmin.FirmaBilgileriGoruntule" />
         <activity android:name=".ui_admin.MusteriListeleAdmin.MusteriBilgileriGoruntule" />
         <activity android:name=".ui_musteri.SiparisVerActivity.UrunListelemeActivity_Siparis" />
-        <activity android:name=".ui_firma.GelenSiparis.GelenSiparisDetayActivity" android:label="Gelen Sipariş Detay Ekranı"></activity>
-        <activity android:name=".ui_musteri.GecmisSiparisMusteri.GecmisSiparisMusteri"
-            android:parentActivityName=".ui_musteri.musteriActivity"
-            android:label="Geçmiş Siparişler"/>
+        <activity
+            android:name=".ui_firma.GelenSiparis.GelenSiparisDetayActivity"
+            android:label="Gelen Sipariş Detay Ekranı" />
+        <activity
+            android:name=".ui_musteri.GecmisSiparisMusteri.GecmisSiparisMusteri"
+            android:label="Geçmiş Siparişler"
+            android:parentActivityName=".ui_musteri.musteriActivity" />
         <activity
             android:name=".ui_musteri.SiparisVerActivity.SiparisVerActivity"
             android:label="Sipariş Ver"
-            android:parentActivityName=".ui_musteri.musteriActivity"/>
+            android:parentActivityName=".ui_musteri.musteriActivity" />
         <activity android:name=".ui_musteri.Sepet.Sepet" />
-        <activity android:name=".ui_musteri.MusteriBilgileriGuncelle.MusteriBilgileriGuncelle"
-            android:parentActivityName=".ui_musteri.musteriActivity"/>
+        <activity
+            android:name=".ui_musteri.MusteriBilgileriGuncelle.MusteriBilgileriGuncelle"
+            android:parentActivityName=".ui_musteri.musteriActivity" />
         <activity android:name=".ui_firma.UrunMenu.UrunMenu" />
         <activity
             android:name=".ui_firma.GelenSiparis.GelenSiparisActivty"
@@ -30,13 +35,10 @@
         <activity
             android:name=".ui_firma.FirmaBilgileriGuncelle.FirmaBilgileriGuncelle"
             android:label="Menüyü Güncelle"
-            android:parentActivityName=".ui_firma.firmaActivity"/>
+            android:parentActivityName=".ui_firma.firmaActivity" />
         <activity android:name=".ui_admin.MusteriListeleAdmin.MusteriListeleAdmin" />
         <activity android:name=".ui_admin.MusteriKaraliste.MusteriKaraliste" />
         <activity android:name=".ui_admin.FirmaKaraliste.FirmaKaraliste" />
-        <activity
-            android:name=".ui_admin.FirmaListeleAdmin.FirmaListeleAdmin"
-            android:label="Firmaları Listele" />
         <activity
             android:name=".ui_firma.firmaActivity"
             android:label="@string/title_activity_firma" />

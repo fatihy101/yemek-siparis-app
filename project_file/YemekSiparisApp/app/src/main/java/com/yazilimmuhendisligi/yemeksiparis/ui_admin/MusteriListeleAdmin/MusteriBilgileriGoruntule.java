@@ -1,5 +1,6 @@
 package com.yazilimmuhendisligi.yemeksiparis.ui_admin.MusteriListeleAdmin;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -9,6 +10,7 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
@@ -23,11 +25,7 @@ public class MusteriBilgileriGoruntule extends AppCompatActivity {
 
     FirebaseFirestore datab;
     DocumentReference referans;
-    TextView textview_mail;
-    TextView textview_no;
-    TextView textview_isim;
-    TextView textview_soyisim;
-    TextView textView_yetli_id;
+    TextView textview_mail, textview_no, textview_isim,textview_soyisim,textView_yetli_id;
     private Button Buttn;
     private Button Buttnn;
 
@@ -72,8 +70,6 @@ public class MusteriBilgileriGoruntule extends AppCompatActivity {
                             textView_yetli_id.setText((String) documentSnapshot.get("yetki_id"));
 
                         }
-
-
                     }
                 });
 
@@ -82,7 +78,7 @@ public class MusteriBilgileriGoruntule extends AppCompatActivity {
     public  void Dbverigotur(){
         Buttn.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
+            public void onClick(View v) { //Banlama butonu
 
                 HashMap<String,Object> hashMap= new HashMap<>();
                 hashMap.put("tel_no", (String) textview_no.getText());
@@ -91,11 +87,21 @@ public class MusteriBilgileriGoruntule extends AppCompatActivity {
                 hashMap.put("email", (String) textview_mail.getText());
                 hashMap.put("yetki_id", (String) textView_yetli_id.getText());
                 hashMap.put("Blacklist",true);
-                referans.set(hashMap);
-                Toast.makeText(MusteriBilgileriGoruntule.this, "Kara Listeye Alındı!", Toast.LENGTH_LONG).show();
-                Intent Intent = new Intent(MusteriBilgileriGoruntule.this,MusteriKaraliste.class);
-                startActivity(Intent);
-                Buttn.setEnabled(false);
+                referans.set(hashMap).addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void aVoid) {
+                        Toast.makeText(MusteriBilgileriGoruntule.this, "Kişi başarıyla karalisteye eklendi.", Toast.LENGTH_SHORT).show();
+                        Intent Intent = new Intent(MusteriBilgileriGoruntule.this,MusteriKaraliste.class);
+                        startActivity(Intent);
+                        Buttn.setEnabled(false);
+                    }
+                }).addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Toast.makeText(MusteriBilgileriGoruntule.this, "Error: " + e.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
+                    }
+                });
+
 
             }
 

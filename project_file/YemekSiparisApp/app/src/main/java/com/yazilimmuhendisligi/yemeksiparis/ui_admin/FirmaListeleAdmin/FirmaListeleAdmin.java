@@ -38,7 +38,7 @@ public class FirmaListeleAdmin extends AppCompatActivity {
         firma_ad = new ArrayList<>();
         firma_uid = new ArrayList<>();
         db= FirebaseFirestore .getInstance();
-        listView = findViewById(R.id.listview22);
+        listView = findViewById(R.id.firma_listview);
         DBVeriAL();
 
 
@@ -63,12 +63,12 @@ public class FirmaListeleAdmin extends AppCompatActivity {
                     Log.d("firma_isimleri: ", firma_ad.get(0) + " " + firma_ad.size());
                 }
                 ArrayAdapter arrayAdapter = new ArrayAdapter(getApplicationContext(),android.R.layout.simple_list_item_1, firma_ad);
-                listView.setAdapter(arrayAdapter);
+               // listView.setAdapter(arrayAdapter);
                 listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
                     @Override
                     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                        Intent Intent = new Intent(FirmaListeleAdmin.this, FirmaBilgileriGoruntule.class);
+                        Intent Intent = new Intent(FirmaListeleAdmin.this,FirmaBilgileriGoruntule.class);
                         Intent.putExtra("firma_uid",firma_uid.get(position));
                         startActivity(Intent);
                     }

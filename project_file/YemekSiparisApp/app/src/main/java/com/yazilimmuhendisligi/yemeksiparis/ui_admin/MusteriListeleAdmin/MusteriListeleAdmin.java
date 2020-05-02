@@ -39,9 +39,6 @@ public class MusteriListeleAdmin extends AppCompatActivity {
         listView = findViewById(R.id.listview22);
         DBVeriAL();
 
-
-
-
     }
 
     public void DBVeriAL()

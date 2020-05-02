@@ -74,12 +74,12 @@ public class FirmaBilgileriGoruntule extends AppCompatActivity {
 
                         }
 
-
                     }
                 });
 
 
     }
+
     public void  Dbveriver(){
         button1.setOnClickListener(new View.OnClickListener() {
             @Override

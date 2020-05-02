@@ -98,7 +98,7 @@ public class girisActivity extends AppCompatActivity {
                 if(documentSnapshot.exists())
                 {
                     String yetkiID = documentSnapshot.getString("yetki_id");
-                    karalisteMi = documentSnapshot.getBoolean("Blacklist");
+                     if(documentSnapshot.contains("Blacklist")) karalisteMi = documentSnapshot.getBoolean("Blacklist");
                     YetkiyeGoreYonlendirme(yetkiID);
                 }
                 else
