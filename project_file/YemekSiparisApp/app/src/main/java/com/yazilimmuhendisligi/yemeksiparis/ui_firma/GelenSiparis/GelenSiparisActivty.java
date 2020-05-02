@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.firebase.Timestamp;
@@ -40,7 +41,7 @@ public class GelenSiparisActivty extends AppCompatActivity {
     GelenSiparisAdapter gelenSiparisAdapter;
     RecyclerView recyclerViewGelenSiparis;
     ArrayList<GelenSiparis> gelenSiparisArrayList;
-    SharedPreferences sharedPreferencesTimestamp;
+    TextView textViewGelenSiparisTitle;
 
 
     @Override
@@ -48,78 +49,93 @@ public class GelenSiparisActivty extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_gelen_siparis);
 
-        firebaseAuth = FirebaseAuth.getInstance();
-        firebaseFirestore = FirebaseFirestore.getInstance();
+        firebaseAuth = FirebaseAuth.getInstance(); // Veritabanından kullanıcı nesnesini örnekle
+        firebaseFirestore = FirebaseFirestore.getInstance(); //Veritabanı nesnesini örnekle
 
-        gelenSiparisArrayList = new ArrayList<>();
+        gelenSiparisArrayList = new ArrayList<>(); //GelenSiparis sınıfından bir Arraylist oluştur.
 
-        getDataFromFirestore();
+        getDataFromFirestore(); //Verileri veritabanından getiren metodu çağır
 
-        //RecyclerView
+        //Verileri listeleyen RecyclerView elemanını tanımla
         recyclerViewGelenSiparis = findViewById(R.id.recyclerViewGelenSiparisler);
         recyclerViewGelenSiparis.setLayoutManager(new LinearLayoutManager(this));
+
+        //GelenSiparisAdapter sınıfını initialize et ve parametre olarak gelensSiparisArrayList i ver
         gelenSiparisAdapter = new GelenSiparisAdapter(gelenSiparisArrayList);
-        recyclerViewGelenSiparis.setAdapter(gelenSiparisAdapter);
+        recyclerViewGelenSiparis.setAdapter(gelenSiparisAdapter); //Recyclerview a gelenSiparisAdapter i bağla
+
+        //GELEN SİPARİŞLER ekranının başlığında kullanıcı emailini göster
+        textViewGelenSiparisTitle = findViewById(R.id.textViewTitleGelenSiparisler);
+        textViewGelenSiparisTitle.setText("   GELEN SİPARİŞLER ("+firebaseAuth.getCurrentUser().getEmail()+")");
     }
 
+    //Listeyi doldurmak için veritabanından veri çeken metod
     public void getDataFromFirestore(){
 
-        CollectionReference collectionReference = firebaseFirestore.collection("siparis");
+        CollectionReference collectionReference = firebaseFirestore.collection("siparis");//Veritabanı tablosunu referans al
 
-        collectionReference.whereEqualTo("firma_email", firebaseAuth.getCurrentUser().getEmail()).orderBy("siparis_tarih_saat", Query.Direction.DESCENDING).addSnapshotListener(new EventListener<QuerySnapshot>() {
-            @Override
-            public void onEvent(@Nullable QuerySnapshot queryDocumentSnapshots, @Nullable FirebaseFirestoreException e) {
-                if(e!=null){
-                    Toast.makeText(GelenSiparisActivty.this,e.getLocalizedMessage(),Toast.LENGTH_LONG).show();
-                }
+        //Referans sorgusunu oluştur. Snapshotlistener ile verileri anlık al
+        collectionReference.whereEqualTo("firma_email", firebaseAuth.getCurrentUser()
+                .getEmail()).orderBy("siparis_tarih_saat", Query.Direction.DESCENDING)
+                .addSnapshotListener(new EventListener<QuerySnapshot>() {
+                    @Override
+                    public void onEvent(@Nullable QuerySnapshot queryDocumentSnapshots, @Nullable FirebaseFirestoreException e) {
+                        if(e!=null){
+                            Toast.makeText(GelenSiparisActivty.this,e.getLocalizedMessage(),Toast.LENGTH_LONG).show();
+                        }
+                        //Exceptionda hata yoksa önce tekrarlı verileri temizle
+                        gelenSiparisArrayList.clear();
 
-                gelenSiparisArrayList.clear(); // Veriler snapshot olarak anlık listelendiği için her veri geldiğinde tekrarlı listeleme olmasın
+                        if(queryDocumentSnapshots!=null){ //Anlık veri varsa snapshopttan data map ine verileri column bazında döngü boyunca ata
 
-                if(queryDocumentSnapshots!=null){
+                            for (DocumentSnapshot snapshot:queryDocumentSnapshots.getDocuments()){ //Veri sayısınca döngüye gir ve veri getir
 
-                    for (DocumentSnapshot snapshot:queryDocumentSnapshots.getDocuments()){ //Veri sayısınca döngüye gir ve veri getir
+                                Map<String,Object> data = snapshot.getData();
 
-                        Map<String,Object> data = snapshot.getData();
+                                String siparisId = snapshot.getId();
+                                String firmaEmail = data.get("firma_email").toString();
+                                String musteriAdSoyad = data.get("musteri_ad_soyad").toString();
+                                String musteriSehir = data.get("musteri_sehir").toString();
+                                String musteriAdres = data.get("musteri_adres").toString();
+                                String musteriTel = data.get("musteri_tel_no").toString();
+                                String siparisDurum = data.get("siparis_durum").toString();
+                                Number toplamFiyat =(Number) data.get("toplam_fiyat");
+                                String siparisEdilenUrunler = data.get("urunler").toString();
 
-                        String siparisId = snapshot.getId();
-                        String firmaEmail = data.get("firma_email").toString();
-                        String musteriAdSoyad = data.get("musteri_ad_soyad").toString();
-                        String musteriSehir = data.get("musteri_sehir").toString();
-                        String musteriAdres = data.get("musteri_adres").toString();
-                        String musteriTel = data.get("musteri_tel_no").toString();
-                        String siparisDurum = data.get("siparis_durum").toString();
-                        Number toplamFiyat =(Number) data.get("toplam_fiyat");
-                        String siparisEdilenUrunler = data.get("urunler").toString();
+                                Timestamp siparisTarih = (Timestamp) data.get("siparis_tarih_saat");//Firebasden düzensiz gelen tarihi ele al
 
-                        Timestamp siparisTarih = (Timestamp) data.get("siparis_tarih_saat");
+                                if(siparisTarih!=null) { // Sipariş Detay ekranındaki Durum güncellemesi sonrası bu if bloğu gerekli. Yoksa listelenmez.
 
-                        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
-                        String formatliSiparisTarihi= simpleDateFormat.format(siparisTarih.toDate());
+                                    //Tarihi insanın anlayabileceği hale getir
+                                    SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
+                                    String formatliSiparisTarihi = simpleDateFormat.format(siparisTarih.toDate());
 
-                        GelenSiparis gelenSiparis = new GelenSiparis();
+                                    GelenSiparis gelenSiparis = new GelenSiparis(); // Veritabanından gelen verileri aktarmak için gelen sipariş objesi oluştur
 
-                        gelenSiparis.setSiparisId(siparisId);
-                        gelenSiparis.setFirmaEmail(firmaEmail);
-                        gelenSiparis.setMusteriAdSoyad(musteriAdSoyad);
-                        gelenSiparis.setMusteriSehir(musteriSehir);
-                        gelenSiparis.setMusteriAdres(musteriAdres);
-                        gelenSiparis.setMusteriTel(musteriTel);
-                        gelenSiparis.setSiparisDurumu(siparisDurum);
-                        gelenSiparis.setToplamFiyat(toplamFiyat.intValue());
-                        gelenSiparis.setSiparisUrunler(siparisEdilenUrunler);
-                        gelenSiparis.setSiparisTarihSaat(formatliSiparisTarihi);
+                                    //Objenin elemanlarına verileri tek tek aktar
+                                    gelenSiparis.setSiparisId(siparisId);
+                                    gelenSiparis.setFirmaEmail(firmaEmail);
+                                    gelenSiparis.setMusteriAdSoyad(musteriAdSoyad);
+                                    gelenSiparis.setMusteriSehir(musteriSehir);
+                                    gelenSiparis.setMusteriAdres(musteriAdres);
+                                    gelenSiparis.setMusteriTel(musteriTel);
+                                    gelenSiparis.setSiparisDurumu(siparisDurum);
+                                    gelenSiparis.setToplamFiyat(toplamFiyat.intValue());
+                                    gelenSiparis.setSiparisUrunler(siparisEdilenUrunler);
+                                    gelenSiparis.setSiparisTarihSaat(formatliSiparisTarihi);
 
-                        gelenSiparisArrayList.add(gelenSiparis);
+                                    gelenSiparisArrayList.add(gelenSiparis); // GelenSiparis sınıfından oluşturulan ArrayListe gelen sipariş nesnesini döngü boyunca aktar
 
-                        gelenSiparisAdapter.notifyDataSetChanged();
+                                    gelenSiparisAdapter.notifyDataSetChanged(); //Adapter a değeşiklik olduğunu bildir
+                                }
 
+                            }
+                        }
+                        if(queryDocumentSnapshots.size()==0){
+                            Toast.makeText(GelenSiparisActivty.this,"Henüz siparişiniz yok",Toast.LENGTH_LONG).show();
+                        }
                     }
-                }
-                if(queryDocumentSnapshots.size()==0){
-                    Toast.makeText(GelenSiparisActivty.this,"Henüz siparişiniz yok",Toast.LENGTH_LONG).show();
-                }
-            }
-        });
+                });
 
     }
 }

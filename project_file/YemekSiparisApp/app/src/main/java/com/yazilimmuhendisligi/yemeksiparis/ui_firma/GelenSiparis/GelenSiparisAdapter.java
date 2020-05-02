@@ -23,12 +23,14 @@ import com.yazilimmuhendisligi.yemeksiparis.R;
 
 import java.util.ArrayList;
 
+/*Recyclerview da gözükecek her bir satıra bağlanacak veriler bu sınıfta oluşturulacak. Sınıf RecyclerView.Adapter sınıfından extend edilir
+ve bu sınıfın tipinden bir ViewHolder parametresi alır*/
 public class GelenSiparisAdapter extends RecyclerView.Adapter<GelenSiparisAdapter.PostHolder> {
 
-    private ArrayList<GelenSiparis> gelenSiparisArrayList;
+    private ArrayList<GelenSiparis> gelenSiparisArrayList; // Constructor dan gelen parametre buraya aktarılır.
 
 
-    public GelenSiparisAdapter(ArrayList<GelenSiparis> gelenSiparisArrayList){
+    public GelenSiparisAdapter(ArrayList<GelenSiparis> gelenSiparisArrayList){ // Constructor
 
         this.gelenSiparisArrayList = gelenSiparisArrayList;
 
@@ -38,6 +40,7 @@ public class GelenSiparisAdapter extends RecyclerView.Adapter<GelenSiparisAdapte
     @Override
     public PostHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
+        //Satır ilk oluştuğunda xml olarak tasarladığımız satır görünümümünü inflate ediyor yani bağlıyoruz.
         LayoutInflater layoutInflater = LayoutInflater.from(parent.getContext());
         View view = layoutInflater.inflate(R.layout.item_adapter_gelen_siparis, parent,false);
 
@@ -48,12 +51,13 @@ public class GelenSiparisAdapter extends RecyclerView.Adapter<GelenSiparisAdapte
     @Override
     public void onBindViewHolder(@NonNull PostHolder holder, final int position) {
 
-        //Post Holder sınıfında atanan kontrollere sipariş arraylistinden position değerine göre verileri aktar
+        //Post Holder sınıfında atanan kontrollere gelensipariş arraylistinden position değerine göre verileri aktar
         holder.siparisDurumu.setText(gelenSiparisArrayList.get(position).getSiparisDurumu());
         holder.siparisEdilenUrunler.setText(gelenSiparisArrayList.get(position).getSiparisUrunler());
         holder.musteriAdSoyad.setText(gelenSiparisArrayList.get(position).getMusteriAdSoyad());
         holder.siparisTarih.setText(gelenSiparisArrayList.get(position).getSiparisTarihSaat());
 
+        // Parent layout yani satırın herhangi bir yerine tıklandığında intente taşıyıcı verileri ekle ve çağıran view in context inin aktivitesine git
         holder.parentLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -102,7 +106,8 @@ public class GelenSiparisAdapter extends RecyclerView.Adapter<GelenSiparisAdapte
 
         TextView siparisDurumu, siparisEdilenUrunler, musteriAdSoyad, siparisTarih;
         ImageView imageViewGelenSiparis;
-        CardView parentLayout;
+        CardView parentLayout; /* Bu parent layoutu satırın herhangi bir yerine tıklandığında çağrılıcak onClickListener için.
+         Satır tasarımı CardView ve Constraint Layout bulundurduğu için ikisinden birini belirlemek yeterli. */
 
         public PostHolder(@NonNull View itemView) {
             super(itemView);

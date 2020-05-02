@@ -41,7 +41,6 @@ public class GelenSiparisDetayActivity extends AppCompatActivity {
     ImageButton imageButtonSiparisDetayPrepare, imageButtonSiparisDetayDelivery, imageButtonSiparisDetayDelivered;
 
     FirebaseFirestore db;
-    FirebaseAuth auth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,19 +66,17 @@ public class GelenSiparisDetayActivity extends AppCompatActivity {
         imageButtonSiparisDetayDelivered = findViewById(R.id.imageButtonSiparisDetayDelivered);
 
         //Kontrollere değerleri getItem'dan ata
-        textViewSiparisDurumu.setText(" Sipariş Durumu: "+ getIntent().getStringExtra("SiparisDurumu"));
-        textViewFirmaEmail.setText(" Firma Email: "+getIntent().getStringExtra("FirmaEmail"));
-        textViewMusteriAdSoyad.setText(" Müşteri Ad Soyad: "+getIntent().getStringExtra("MusteriAdSoyad"));
-        textViewMusteriAdres.setText(" Müşteri Adres: "+getIntent().getStringExtra("MusteriAdres"));
-        textViewMusteriSehir.setText(" Şehir: "+getIntent().getStringExtra("MusteriSehir"));
-        textViewMusteriTelefon.setText(" Müşteri Telefon: "+ getIntent().getStringExtra("MusteriTel"));
-        textViewSiparisZamani.setText(" Sipariz Zamanı: "+ getIntent().getStringExtra("SiparisTarihSaat"));
-        textViewSiparisEdilenUrunler.setText(" Sipariş Edilen Ürünler: "+getIntent().getStringExtra("SiparisUrunler"));
-        textViewToplamSiparisTutari.setText(" Toplam Sipariş Tutarı: "+getIntent().getIntExtra("ToplamFiyat",0)+"-TL");
+        textViewSiparisDurumu.setText("Sipariş Durumu: "+ getIntent().getStringExtra("SiparisDurumu"));
+        textViewFirmaEmail.setText("Firma Email: "+getIntent().getStringExtra("FirmaEmail"));
+        textViewMusteriAdSoyad.setText("Müşteri Ad Soyad: "+getIntent().getStringExtra("MusteriAdSoyad"));
+        textViewMusteriAdres.setText("Müşteri Adres: "+getIntent().getStringExtra("MusteriAdres"));
+        textViewMusteriSehir.setText("Şehir: "+getIntent().getStringExtra("MusteriSehir"));
+        textViewMusteriTelefon.setText("Müşteri Telefon: "+ getIntent().getStringExtra("MusteriTel"));
+        textViewSiparisZamani.setText("Sipariz Zamanı: "+ getIntent().getStringExtra("SiparisTarihSaat"));
+        textViewSiparisEdilenUrunler.setText("Sipariş Edilen Ürünler: "+getIntent().getStringExtra("SiparisUrunler"));
+        textViewToplamSiparisTutari.setText("Toplam Sipariş Tutarı: "+getIntent().getIntExtra("ToplamFiyat",0)+"-TL");
 
         db = FirebaseFirestore.getInstance();
-        auth = FirebaseAuth.getInstance();
-
 
         //getIdem dan gelen sipariş durumuna göre sipariş durum image ini setle
         CharSequence siparisDurumuText = getIntent().getStringExtra("SiparisDurumu");
@@ -119,13 +116,28 @@ public class GelenSiparisDetayActivity extends AppCompatActivity {
 
     }
 
+    //Hazırla butonuna basıldığında çağırılacak metod
     public void durumSetPrepare(View view){
 
-        System.out.println(getIntent().getStringExtra("SiparisId"));
+        durumUpdate("Hazırlanıyor");
 
-        //Timestamp tarihSaat = new Timestamp(new Date(getIntent().getStringExtra("SiparisTarihSaat")));
+    }
 
-        Map<String, Object> durumBilgisiMap = new HashMap<>();
+    //Yolla butonuna basıldığında çağırılacak metod
+    public void durumSetDeliver(View view){
+        durumUpdate("Yolda");
+    }
+
+    //Teslim edildi butonuna basıldığında çağırılacak metod
+    public void durumSetDelivered(View view){
+        durumUpdate("Teslim Edildi");
+    }
+
+    //Sipariş tablosunda sipariş durumunu güncelleyen metod
+    public void durumUpdate(String durum){
+        System.out.println(getIntent().getStringExtra("SiparisId")); //Burası kontrol amaçlı
+
+        Map<String, Object> durumBilgisiMap = new HashMap<>();// Veritabanına aktarma yapacak olan map referansı
         durumBilgisiMap.put("firma_email",getIntent().getStringExtra("FirmaEmail"));
         durumBilgisiMap.put("musteri_ad_soyad", getIntent().getStringExtra("MusteriAdSoyad"));
         durumBilgisiMap.put("musteri_sehir", getIntent().getStringExtra("MusteriSehir"));
@@ -135,27 +147,25 @@ public class GelenSiparisDetayActivity extends AppCompatActivity {
         durumBilgisiMap.put("urunler", getIntent().getStringExtra("SiparisUrunler"));
         durumBilgisiMap.put("siparis_tarih_saat", FieldValue.serverTimestamp());
 
-        durumBilgisiMap.put("siparis_durum", "Hazırlanıyor");
+        durumBilgisiMap.put("siparis_durum", durum); //Sadece bu kısım güncelleniyor.
 
+        //Hangi firebase dökümanında güncelleme yapacaksak onu referans al(siparis dökümanında siparisId ye göre)
         DocumentReference durumRef = db.document("siparis/"+ getIntent().getStringExtra("SiparisId"));
 
-            durumRef.set(durumBilgisiMap).addOnSuccessListener(new OnSuccessListener<Void>() {
-                @Override
-                public void onSuccess(Void aVoid) {
-                    Toast.makeText(GelenSiparisDetayActivity.this, "Durum başarıyla güncellendi.", Toast.LENGTH_SHORT).show();
-                    Intent intent = new Intent(getApplicationContext(),GelenSiparisActivty.class);
-                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);// Açık olan tüm activity leri kapat
-                    startActivity(intent);
-                }
-            }).addOnFailureListener(new OnFailureListener() {
-                @Override
-                public void onFailure(@NonNull Exception e) {
-                    Toast.makeText(GelenSiparisDetayActivity.this, "Error: " +e.getLocalizedMessage() , Toast.LENGTH_SHORT).show();
-                }
-            });
-
-
-
-
+        // Oluşturulan referansı map ile setle. Başarılıysa ilgili intent i çağır yoksa hatayı ver
+        durumRef.set(durumBilgisiMap).addOnSuccessListener(new OnSuccessListener<Void>() {
+            @Override
+            public void onSuccess(Void aVoid) {
+                Toast.makeText(GelenSiparisDetayActivity.this, "Durum başarıyla güncellendi.", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(getApplicationContext(),GelenSiparisActivty.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);// Açık olan tüm activity leri kapat
+                startActivity(intent);
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                Toast.makeText(GelenSiparisDetayActivity.this, "Error: " +e.getLocalizedMessage() , Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 }
