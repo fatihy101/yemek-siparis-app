@@ -42,7 +42,7 @@ public class MusteriListeleAdmin extends AppCompatActivity {
     }
 
     public void DBVeriAL()
-    {
+    {//Realtime update sıfırlaması tamam
         Log.d("müsteri_isimleri", "DBVeriAL: içerideyim ");
         CollectionReference collectionReference  = db.collection("kullanici_bilgileri");
         Log.d("müsteri_isimleri", "Collection reference initialized. ");
@@ -51,6 +51,7 @@ public class MusteriListeleAdmin extends AppCompatActivity {
             public void onEvent(@Nullable QuerySnapshot queryDocumentSnapshots, @Nullable FirebaseFirestoreException e) {
                 if(e != null ) Toast.makeText(getApplicationContext(), e.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
                 musteri_email.clear();
+                musteri_uid.clear();
                 for (DocumentSnapshot document : queryDocumentSnapshots.getDocuments())
                 {
                     musteri_email.add((String) document.get("email"));

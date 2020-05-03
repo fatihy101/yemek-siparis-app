@@ -1,6 +1,7 @@
 package com.yazilimmuhendisligi.yemeksiparis.ui_admin.FirmaListeleAdmin;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
@@ -15,7 +16,9 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.yazilimmuhendisligi.yemeksiparis.R;
 
@@ -25,17 +28,17 @@ public class FirmaBilgileriGoruntule extends AppCompatActivity {
 
     FirebaseFirestore firmabase;
     DocumentReference docKullaniciRef;
-    HashMap hashMap;
+    HashMap<String, Object> hashMap;
     int local_urun_sayisi = -1;
+    boolean isBlacklisted;
     String firma_uid;
     TextView firma_adi, firma_sahip_ad_soyad,firma_telno, firma_yetki_id,firma_mail,firma_onay,menu_sayisi;
     Button karaliste_ekle_button, karaliste_cikar_button, firma_onay_button;
 
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setTitle("Firma Detay Ekranı");
        firma_uid = getIntent().getStringExtra("firma_uid");
         firmabase=FirebaseFirestore.getInstance();
         docKullaniciRef = firmabase.document("kullanici_bilgileri/"+firma_uid);
@@ -59,26 +62,29 @@ public class FirmaBilgileriGoruntule extends AppCompatActivity {
     }
     public void Dbverial(){
         urunSayisiniAl();
-        docKullaniciRef.get()
-                .addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
-                    @Override
-                    public void onSuccess(DocumentSnapshot documentSnapshot) {
-                        if (documentSnapshot.exists()){
-                            firma_adi.setText((String) documentSnapshot.get("firma_adi"));
-                            firma_mail.setText((String) documentSnapshot.get("email"));
-                            firma_sahip_ad_soyad.setText((String)documentSnapshot.get("firma_sahibi_ad_soyad"));
-                            firma_telno.setText((String) documentSnapshot.get("tel_no"));
-                            firma_yetki_id.setText((String) documentSnapshot.get("yetki_id"));
-                            firma_onay.setText(String.valueOf(documentSnapshot.get("admin_onayi")));
-                            Log.d("snapshot control", "onSuccess: " + firma_adi.getText());
-                        }
-                        else Log.d("snapshot control", "onSuccess: Fail");
-                        //Dbveriver();
-                    }
-                }).addOnFailureListener(new OnFailureListener() {
+        docKullaniciRef.addSnapshotListener(new EventListener<DocumentSnapshot>() {
             @Override
-            public void onFailure(@NonNull Exception e) {
-                Log.d("snapshot control", "onFailure: hey");
+            public void onEvent(@Nullable DocumentSnapshot documentSnapshot, @Nullable FirebaseFirestoreException e) {
+                if (documentSnapshot.exists()){
+                    firma_adi.setText((String) documentSnapshot.get("firma_adi"));
+                    firma_mail.setText((String) documentSnapshot.get("email"));
+                    firma_sahip_ad_soyad.setText((String)documentSnapshot.get("firma_sahibi_ad_soyad"));
+                    firma_telno.setText((String) documentSnapshot.get("tel_no"));
+                    firma_yetki_id.setText((String) documentSnapshot.get("yetki_id"));
+                    firma_onay.setText(String.valueOf(documentSnapshot.get("admin_onayi")));
+                    try { isBlacklisted = (boolean) documentSnapshot.get("Blacklist"); }
+                    catch (Exception a)
+                    {
+                        isBlacklisted =false;
+                        Log.d("exception", "isBlacklisted hata: " + a.getLocalizedMessage());
+                    } /*if(documentSnapshot.get("Blacklist") == null) isBlacklisted =false;
+                            else isBlacklisted = (boolean) documentSnapshot.get("Blacklist");*/
+                    setButtonVisibility(isBlacklisted);
+
+                    Log.d("snapshot control", "onSuccess: " + firma_adi.getText());
+                }
+                else Log.d("snapshot control", "onSuccess: Fail");
+                Dbveriver(); //Yönledirildi to method
             }
         });
     }
@@ -97,41 +103,57 @@ public class FirmaBilgileriGoruntule extends AppCompatActivity {
             }
         });
     }
+    public void setButtonVisibility(boolean isBlacklist)
+    {
+        if(isBlacklist)
+        {
+            karaliste_cikar_button.setEnabled(true);
+            karaliste_ekle_button.setEnabled(false);
+        } else
+        {
+            karaliste_ekle_button.setEnabled(true);
+            karaliste_cikar_button.setEnabled(false);
+        }
+    }
+
+    public void setData()
+    {
+        hashMap= new HashMap<>();
+        hashMap.put("tel_no", (String) firma_telno.getText());
+        hashMap.put("firma_sahibi_ad_soyad", (String) firma_sahip_ad_soyad.getText());
+        hashMap.put("firma_adi", (String) firma_adi.getText());
+        hashMap.put("email", (String) firma_mail.getText());
+        hashMap.put("yetki_id", (String) firma_yetki_id.getText());
+    }
+
 
     public void  Dbveriver(){
+        setData();
         karaliste_ekle_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                HashMap<String,Object> hashMap= new HashMap<>();
-                hashMap.put("tel_no", (String) firma_telno.getText());
-                hashMap.put("firma_sahibi_ad_soyad", (String) firma_sahip_ad_soyad.getText());
-                hashMap.put("firma_adi", (String) firma_adi.getText());
-                hashMap.put("email", (String) firma_mail.getText());
-                hashMap.put("yetki_id", (String) firma_yetki_id.getText());
-                //hashMap.put("admin_onayi", Boolean.valueOf((String) firma_onay.getText()) );
+
+                hashMap.put("admin_onayi", Boolean.valueOf((String) firma_onay.getText()) );
                 hashMap.put("Blacklist",true);
                 docKullaniciRef.set(hashMap);
                 Toast.makeText(getApplicationContext(), "Kara Listeye Alındı!", Toast.LENGTH_LONG).show();
                 karaliste_ekle_button.setEnabled(false);
+                karaliste_cikar_button.setEnabled(true);
 
             }
-        });
+        }); //End of karalistButton
 
         karaliste_cikar_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                HashMap<String,Object> HASHMAP = new HashMap<>();
-                HASHMAP.put("tel_no",(String) firma_telno.getText());
-                HASHMAP.put("firma_sahibi_ad_soyad",(String) firma_sahip_ad_soyad.getText());
-                HASHMAP.put("firma_adi",(String) firma_adi.getText());
-                HASHMAP.put("email",(String) firma_mail.getText());
-                HASHMAP.put("yetki_id",(String) firma_yetki_id.getText());
-               // HASHMAP.put("admin_onayi", Boolean.valueOf((String) firma_onay.getText()));
-                HASHMAP.put("Blacklist",false);
-                docKullaniciRef.set(hashMap).addOnSuccessListener(new OnSuccessListener<Void>() {
+                hashMap.put("admin_onayi", Boolean.valueOf((String) firma_onay.getText()));
+                hashMap.put("Blacklist",false);
+                docKullaniciRef.set(FirmaBilgileriGoruntule.this.hashMap).addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
                     public void onSuccess(Void aVoid) {
-                        Toast.makeText(FirmaBilgileriGoruntule.this, "Başarıyla eklendi ", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(FirmaBilgileriGoruntule.this, "Başarıyla karalisteden çıkarıldı! ", Toast.LENGTH_SHORT).show();
+                        karaliste_ekle_button.setEnabled(true);
+                        karaliste_cikar_button.setEnabled(false);
                     }
                 }).addOnFailureListener(new OnFailureListener() {
                     @Override
@@ -139,16 +161,26 @@ public class FirmaBilgileriGoruntule extends AppCompatActivity {
                         Log.d("Fail", "onFailure: " + e.getLocalizedMessage());
                         Toast.makeText(FirmaBilgileriGoruntule.this, "Hata: "+ e.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
                     }
+                }); //end of docKullaniciRef
+            }
+        });//End of cikar
+
+        firma_onay_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                hashMap.put("admin_onayi", true);
+                hashMap.put("Blacklist",isBlacklisted);
+                docKullaniciRef.set(hashMap).addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void aVoid) {
+                        Toast.makeText(FirmaBilgileriGoruntule.this, "Kullanıcı, admin tarafından onaylandı!", Toast.LENGTH_SHORT).show();
+                    }
                 });
             }
-        });
+        });//End of onay_button
 
+    } //end of Veriver()
 
-
-
-
-    }
-
-
+//Todo: Firma ekranına durum güncellemesi için textview koy
 
 }

@@ -33,7 +33,7 @@ public class MusteriBilgileriGoruntule extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        setTitle("Müşteri Detay Ekranı");
         setContentView(R.layout.activity_musteri_bilgileri_goruntule);
         musteri_uid = getIntent().getStringExtra("musteri_uid");
         String musteri_email_title = getIntent().getStringExtra("musteri_email");
@@ -44,10 +44,10 @@ public class MusteriBilgileriGoruntule extends AppCompatActivity {
 
 
         textView_yetli_id= findViewById(R.id.textView66);
-        textview_mail  =  findViewById(R.id.textview_no);
-        textview_no  =  findViewById(R.id.textview_mail);
-        textview_isim  =  findViewById(R.id.textview_soyisim);
-        textview_soyisim   =  findViewById(R.id.textview_isim);
+        textview_mail  =  findViewById(R.id.textview_mail);
+        textview_no  =  findViewById(R.id.textview_no);
+        textview_isim  =  findViewById(R.id.textview_isim);
+        textview_soyisim   =  findViewById(R.id.textview_soyisim);
         referans = datab.document("kullanici_bilgileri/"+musteri_uid);
 
         Dbverigetir();

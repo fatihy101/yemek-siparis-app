@@ -42,11 +42,16 @@ public class MusteriKaraliste extends AppCompatActivity {
 
     }
 
-        public void Dbvericek(){
+        public void Dbvericek(){//Realtime update sıfırlaması tamam
         CollectionReference collectionReference = databse.collection("kullanici_bilgileri");
-        collectionReference.whereEqualTo("Blacklist",true).addSnapshotListener(new EventListener<QuerySnapshot>() {
+        collectionReference
+                .whereEqualTo("Blacklist",true)
+                .whereEqualTo("yetki_id","1")
+                .addSnapshotListener(new EventListener<QuerySnapshot>() {
             @Override
             public void onEvent(@Nullable QuerySnapshot queryDocumentSnapshots, @Nullable FirebaseFirestoreException e) {
+                musteri_uid.clear();
+                musteri_email.clear();
                 for (DocumentSnapshot document : queryDocumentSnapshots.getDocuments())
                 {
                     musteri_email.add((String) document.get("email"));

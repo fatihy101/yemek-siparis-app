@@ -45,7 +45,7 @@ public class FirmaListeleAdmin extends AppCompatActivity {
     }
 
     public void DBVeriAL()
-    {
+    { //Realtime update sıfırlaması tamam
         Log.d("firma_isimleri", "DBVeriAL: içerideyim ");
         CollectionReference collectionReference  = db.collection("kullanici_bilgileri");
         Log.d("firma_isimleri", "Collection reference initialized. ");
@@ -65,7 +65,7 @@ public class FirmaListeleAdmin extends AppCompatActivity {
                 Log.d("firma_isimleri: 2 ", firma_ad.get(0) + " " + firma_ad.size());
                 Log.d("firma_isimleri: uid:", firma_uid.get(0) + " " + firma_uid.size());
                  System.out.println(firma_ad);
-                 ArrayAdapter arrayAdapter = new ArrayAdapter(getApplicationContext(),android.R.layout.simple_list_item_1,firma_ad);
+                 ArrayAdapter arrayAdapter = new ArrayAdapter(getApplicationContext(),android.R.layout.simple_list_item_1,firma_ad); //Todo: firma_ad değişkenine nullcheck yap (sonra)
                 listView.setAdapter(arrayAdapter);
                 listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
@@ -76,7 +76,7 @@ public class FirmaListeleAdmin extends AppCompatActivity {
                         startActivity(Intent);
                     }
                 });
-}
+                                        }
             }
         });
 

@@ -42,11 +42,15 @@ public class FirmaKaraliste extends AppCompatActivity {
         dbverigetir();
 
     }
-     public void dbverigetir(){
+     public void dbverigetir(){//Realtime update sıfırlaması tamam
          CollectionReference collectionReference=databaser.collection("kullanici_bilgileri");
-         collectionReference.whereEqualTo("Blacklist",true).addSnapshotListener(new EventListener<QuerySnapshot>() {
+         collectionReference.whereEqualTo("Blacklist",true)
+                 .whereEqualTo("yetki_id","2")
+                 .addSnapshotListener(new EventListener<QuerySnapshot>() {
              @Override
              public void onEvent(@Nullable QuerySnapshot queryDocumentSnapshots, @Nullable FirebaseFirestoreException e) {
+                 firma_mail.clear();
+                 firma_uid.clear();
                  for (DocumentSnapshot document : queryDocumentSnapshots.getDocuments())
                  {
                      firma_mail.add((String) document.get("email"));
