@@ -58,7 +58,7 @@ public class FirmaKaraliste extends AppCompatActivity {
                      @Override
                      public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                          Intent Intent = new Intent(FirmaKaraliste.this, FirmaBilgileriGoruntule.class);
-                         Intent.putExtra("musteri_uid",firma_uid.get(position));
+                         Intent.putExtra("firma_uid",firma_uid.get(position));
                          startActivity(Intent);
                      }
                  });

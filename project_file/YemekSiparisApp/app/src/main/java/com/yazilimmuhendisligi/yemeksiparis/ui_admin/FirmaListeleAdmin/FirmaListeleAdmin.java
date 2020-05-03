@@ -42,8 +42,6 @@ public class FirmaListeleAdmin extends AppCompatActivity {
         DBVeriAL();
 
 
-
-
     }
 
     public void DBVeriAL()
@@ -55,15 +53,20 @@ public class FirmaListeleAdmin extends AppCompatActivity {
             @Override
             public void onEvent(@Nullable QuerySnapshot queryDocumentSnapshots, @Nullable FirebaseFirestoreException e) {
                 if(e != null ) Toast.makeText(getApplicationContext(), e.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
-                firma_ad.clear();
+             if(!queryDocumentSnapshots.isEmpty()) {
+                 firma_ad.clear();
+                 firma_uid.clear();
                 for (DocumentSnapshot document : queryDocumentSnapshots.getDocuments())
                 {
                     firma_ad.add((String) document.get("firma_adi"));
                     firma_uid.add(document.getId());
-                    Log.d("firma_isimleri: ", firma_ad.get(0) + " " + firma_ad.size());
+                    Log.d("firma_isimleri: 1", firma_ad.get(0) + " " + firma_ad.size());
                 }
-                ArrayAdapter arrayAdapter = new ArrayAdapter(getApplicationContext(),android.R.layout.simple_list_item_1, firma_ad);
-               // listView.setAdapter(arrayAdapter);
+                Log.d("firma_isimleri: 2 ", firma_ad.get(0) + " " + firma_ad.size());
+                Log.d("firma_isimleri: uid:", firma_uid.get(0) + " " + firma_uid.size());
+                 System.out.println(firma_ad);
+                 ArrayAdapter arrayAdapter = new ArrayAdapter(getApplicationContext(),android.R.layout.simple_list_item_1,firma_ad);
+                listView.setAdapter(arrayAdapter);
                 listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
                     @Override
@@ -73,7 +76,7 @@ public class FirmaListeleAdmin extends AppCompatActivity {
                         startActivity(Intent);
                     }
                 });
-
+}
             }
         });
 
