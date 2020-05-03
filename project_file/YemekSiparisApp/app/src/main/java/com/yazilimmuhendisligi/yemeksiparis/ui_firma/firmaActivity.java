@@ -6,10 +6,16 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.EventListener;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.yazilimmuhendisligi.yemeksiparis.R;
 import com.yazilimmuhendisligi.yemeksiparis.girisActivity;
 import com.yazilimmuhendisligi.yemeksiparis.ui_firma.FirmaBilgileriGuncelle.FirmaBilgileriGuncelle;
@@ -17,6 +23,7 @@ import com.yazilimmuhendisligi.yemeksiparis.ui_firma.GelenSiparis.GelenSiparisAc
 import com.yazilimmuhendisligi.yemeksiparis.ui_firma.UrunMenu.UrunMenu;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.navigation.NavController;
@@ -24,8 +31,12 @@ import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
+import org.w3c.dom.Document;
+
 public class firmaActivity extends AppCompatActivity {
 FirebaseAuth auth;
+TextView onay_bilgi;
+FirebaseFirestore firestore;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,8 +44,10 @@ FirebaseAuth auth;
         setContentView(R.layout.activity_firma);
         ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(false);
-        //Buradan sonra yazmaya başlayın.
+        onay_bilgi = findViewById(R.id.onay_bilgi_tv_firma);
         auth = FirebaseAuth.getInstance();
+        firestore  = FirebaseFirestore.getInstance();
+        getOnayData();
     }
 
 
@@ -76,5 +89,33 @@ FirebaseAuth auth;
     public void gelenSiparislerActivity (View view){
         Intent intent = new Intent(getApplicationContext(), GelenSiparisActivty.class);
         startActivity(intent);
+    }
+
+    public void getOnayData()
+    {
+        DocumentReference reference = firestore.collection("kullanici_bilgileri")
+                .document(auth.getCurrentUser().getUid());
+        reference.addSnapshotListener(new EventListener<DocumentSnapshot>() {
+            @Override
+            public void onEvent(@Nullable DocumentSnapshot documentSnapshot, @Nullable FirebaseFirestoreException e) {
+                onayKontrol(documentSnapshot.getBoolean("admin_onayi"));
+            }
+        });
+    }
+
+    public void onayKontrol(boolean isAdminConfirm)
+    {
+        System.out.println("onay val: " + isAdminConfirm);
+        if(isAdminConfirm)
+        {
+            onay_bilgi.setText("Hesabınız admin tarafından onaylandı!");
+            onay_bilgi.setBackgroundResource(R.color.onayColor);
+        }
+        else
+        {
+            onay_bilgi.setText("Hesabınız admin tarafından henüz onaylanmadı!");
+            onay_bilgi.setBackgroundResource(R.color.alternativeColor);
+
+        }
     }
 }

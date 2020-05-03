@@ -133,7 +133,7 @@ public class FirmaBilgileriGoruntule extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                hashMap.put("admin_onayi", Boolean.valueOf((String) firma_onay.getText()) );
+                hashMap.put("admin_onayi",false);
                 hashMap.put("Blacklist",true);
                 docKullaniciRef.set(hashMap);
                 Toast.makeText(getApplicationContext(), "Kara Listeye Alındı!", Toast.LENGTH_LONG).show();
