@@ -1,80 +1,87 @@
 <?xml version="1.0" encoding="utf-8"?>
-<GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".ui_musteri.musteriActivity"
     android:layout_width="match_parent"
-    android:orientation="horizontal"
-    android:columnCount="2"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    tools:context=".ui_musteri.musteriActivity">
 
     <Button
         android:id="@+id/siparis_ver_musteri_button"
-        android:textColor="@color/textColor"
-        android:text="Sipariş Ver"
-        android:fontFamily="sans-serif-black"
-        android:textSize="20sp"
-        android:textAllCaps="false"
         android:layout_width="180dp"
         android:layout_height="180dp"
-        android:layout_row="0"
-        android:layout_column="0"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="31dp"
+        android:layout_marginEnd="25dp"
+        android:layout_marginBottom="30dp"
         android:background="@color/colorPrimaryDark"
+        android:fontFamily="sans-serif-black"
         android:onClick="siparisVerActivityGit"
-         android:layout_marginStart="15dp"
-        android:layout_marginTop="20dp"/>
+        android:text="Sipariş Ver"
+        android:textAllCaps="false"
+        android:textColor="@color/textColor"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/bilgi_guncelle_musteri_button"
+        app:layout_constraintEnd_toStartOf="@+id/sepet_musteri_button"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <Button
 
         android:id="@+id/sepet_musteri_button"
         android:layout_width="180dp"
         android:layout_height="180dp"
-        android:textSize="20sp"
-        android:fontFamily="sans-serif-black"
-        android:layout_row="1"
-        android:layout_column="0"
+        android:layout_marginTop="31dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="30dp"
         android:background="@color/colorPrimaryDark"
-        android:textColor="@color/textColor"
+        android:fontFamily="sans-serif-black"
+        android:onClick="sepetActivityGit"
         android:text="Sepet"
         android:textAllCaps="false"
-        android:onClick="sepetActivityGit"
-         android:layout_marginStart="15dp"
-        android:layout_marginTop="20dp"/>
+        android:textColor="@color/textColor"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/gecmis_siparis_musteri_button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/siparis_ver_musteri_button"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/gecmis_siparis_musteri_button"
         android:layout_width="180dp"
         android:layout_height="180dp"
-        android:layout_row="0"
-        android:layout_column="1"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="182dp"
         android:background="@color/colorPrimaryDark"
+        android:fontFamily="sans-serif-black"
         android:onClick="gecmisSiparisActivityGit"
         android:text="Geçmiş Siparişlerim"
         android:textAllCaps="false"
-        android:textSize="20sp"
         android:textColor="@color/textColor"
-        android:fontFamily="sans-serif-black"
-                 android:layout_marginStart="15dp"
-        android:layout_marginTop="8dp"
-        />
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/bilgi_guncelle_musteri_button"
+        app:layout_constraintTop_toBottomOf="@+id/sepet_musteri_button" />
 
     <Button
         android:id="@+id/bilgi_guncelle_musteri_button"
         android:layout_width="180dp"
         android:layout_height="180dp"
-        android:layout_row="1"
-        android:layout_column="1"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="25dp"
+        android:layout_marginBottom="182dp"
         android:background="@color/colorPrimaryDark"
-        android:textColor="@color/textColor"
-        android:text="Adresimi Güncelle/Değiştir"
-        android:textSize="20sp"
-        android:textAllCaps="false"
         android:fontFamily="sans-serif-black"
         android:onClick="musteriBilgileriGuncelleGit"
-                 android:layout_marginStart="15dp"
-        android:layout_marginTop="8dp"
-        />
+        android:text="Adresimi Güncelle/Değiştir"
+        android:textAllCaps="false"
+        android:textColor="@color/textColor"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/gecmis_siparis_musteri_button"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/siparis_ver_musteri_button" />
 
 
-
-
-</GridLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
