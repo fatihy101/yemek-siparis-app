@@ -48,11 +48,15 @@ public class SiparisVerActivity extends AppCompatActivity  {
     public void DBVeriAl()
     {
 CollectionReference collectionReference  = db.collection("kullanici_bilgileri");
-collectionReference.whereEqualTo("yetki_id","2").addSnapshotListener(new EventListener<QuerySnapshot>() {
+collectionReference.whereEqualTo("yetki_id","2")
+        .whereEqualTo("admin_onayi",true)
+        .addSnapshotListener(new EventListener<QuerySnapshot>() {
     @Override
     public void onEvent(@Nullable QuerySnapshot queryDocumentSnapshots, @Nullable FirebaseFirestoreException e) {
            if(e != null ) Toast.makeText(SiparisVerActivity.this, e.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
-
+            firmalar_email.clear();
+            firmalar_isim.clear();
+            firmalar_uid.clear();
            for (DocumentSnapshot document : queryDocumentSnapshots.getDocuments())
            {
                firmalar_isim.add((String) document.get("firma_adi"));
