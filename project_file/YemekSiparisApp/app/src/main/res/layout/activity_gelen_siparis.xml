@@ -7,34 +7,21 @@
  **********************************
 -->
 
-<androidx.constraintlayout.widget.ConstraintLayout
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".ui_firma.GelenSiparis.GelenSiparisActivty">
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerViewGelenSiparisler"
-        android:layout_width="397dp"
-        android:layout_height="557dp"
-        android:layout_marginStart="1dp"
-        android:layout_marginTop="1dp"
-        android:layout_marginEnd="1dp"
-        android:layout_marginBottom="1dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.416"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0" />
+    android:layout_height="wrap_content"
+    tools:context=".ui_firma.GelenSiparis.GelenSiparisActivty"
+    android:orientation="vertical">
 
     <TextView
         android:id="@+id/textViewTitleGelenSiparisler"
-        android:layout_width="416dp"
+        android:layout_width="match_parent"
         android:layout_height="30dp"
         android:layout_marginTop="4dp"
+        android:layout_marginBottom="10dp"
         android:background="#E91E63"
         android:gravity="center_vertical"
         android:text="   GELEN SİPARİŞLER (cemsit@burger.com)"
@@ -44,4 +31,17 @@
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerViewGelenSiparisler"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:layout_marginBottom="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/textViewTitleGelenSiparisler"
+        app:layout_constraintStart_toStartOf="@+id/textViewTitleGelenSiparisler"
+        app:layout_constraintTop_toBottomOf="@+id/textViewTitleGelenSiparisler" />
+
+
+</LinearLayout>

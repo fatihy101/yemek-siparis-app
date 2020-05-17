@@ -7,255 +7,223 @@
  **********************************
 -->
 
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
     tools:context=".ui_firma.GelenSiparis.GelenSiparisDetayActivity">
 
-    <TextView
-        android:id="@+id/textViewSiparisDetayMusteriAdres"
-        android:layout_width="350dp"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="10dp"
-        android:background="@color/colorPrimaryDark"
-        android:gravity="center_vertical"
-        android:paddingStart="5dp"
-        android:paddingEnd="5dp"
-        android:text=" Müşteri Adres:"
-        android:textAlignment="gravity"
-        android:textAllCaps="false"
-        android:textColor="#FFFFFF"
-        app:layout_constraintBottom_toTopOf="@+id/textViewSiparisDetayMusteriSehir"
-        app:layout_constraintEnd_toEndOf="@+id/textViewSiparisDetayMusteriAdSoyad"
-        app:layout_constraintStart_toStartOf="@+id/textViewSiparisDetayMusteriAdSoyad" />
+        android:orientation="horizontal"
+        android:layout_margin="5dp">
 
-    <TextView
-        android:id="@+id/textViewSiparisDetayToplamFiyat"
-        android:layout_width="350dp"
-        android:layout_height="25dp"
-        android:layout_marginBottom="10dp"
-        android:background="@color/colorPrimaryDark"
-        android:gravity="center_vertical"
-        android:paddingStart="5dp"
-        android:paddingEnd="5dp"
-        android:text=" Toplam Sipariş Tutarı:"
-        android:textAlignment="gravity"
-        android:textAllCaps="false"
-        android:textColor="#FFFFFF"
-        app:layout_constraintBottom_toTopOf="@+id/imageButtonSiparisDetayDelivery"
-        app:layout_constraintEnd_toEndOf="@+id/textViewSiparisDetaySiparisUrunler"
-        app:layout_constraintStart_toStartOf="@+id/textViewSiparisDetaySiparisUrunler" />
+        <ImageView
+            android:id="@+id/imageViewSiparisDetayDurumu"
+            android:layout_width="75dp"
+            android:layout_height="75dp"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="0dp"
+            app:srcCompat="@drawable/new_order" />
 
-    <ImageButton
-        android:id="@+id/imageButtonSiparisDetayPrepare"
-        android:layout_width="96dp"
-        android:layout_height="96dp"
-        android:backgroundTint="@color/colorPrimary"
-        android:foregroundTint="#FFFFFF"
-        android:onClick="durumSetPrepare"
-        android:saveEnabled="false"
-        android:scaleType="fitCenter"
-        app:layout_constraintBottom_toTopOf="@+id/textViewDetayPrepare"
-        app:layout_constraintStart_toStartOf="@+id/textViewSiparisDetayToplamFiyat"
-        app:srcCompat="@drawable/prepare" />
+        <TextView
+            android:id="@+id/textViewSiparisDetaySiparisDurumu"
+            android:layout_width="match_parent"
+            android:padding="10dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginStart="5dp"
+            android:background="@color/colorPrimaryDark"
+            android:gravity="center_vertical"
+            android:text=" Sipariş Durumu: Yeni Sipariş"
+            android:textAlignment="gravity"
+            android:textColor="#FFFFFF"
+            android:textSize="16sp"
+            android:textStyle="bold" />
 
-    <ImageButton
-        android:id="@+id/imageButtonSiparisDetayDelivery"
-        android:layout_width="96dp"
-        android:layout_height="96dp"
-        android:backgroundTint="@color/colorPrimary"
-        android:onClick="durumSetDeliver"
-        android:scaleType="fitCenter"
-        app:layout_constraintBottom_toTopOf="@+id/textViewDetayDeliver"
-        app:layout_constraintEnd_toStartOf="@+id/imageButtonSiparisDetayDelivered"
-        app:layout_constraintStart_toEndOf="@+id/imageButtonSiparisDetayPrepare"
-        app:srcCompat="@drawable/delivery" />
+    </LinearLayout>
 
-    <TextView
-        android:id="@+id/textViewDetayPrepare"
-        android:layout_width="96dp"
-        android:layout_height="25dp"
-        android:layout_marginBottom="15dp"
-        android:background="@color/colorPrimaryDark"
-        android:gravity="center_vertical"
-        android:text="       Hazırla"
-        android:textAllCaps="false"
-        android:textColor="#FFFFFF"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/imageButtonSiparisDetayPrepare"
-        app:layout_constraintStart_toStartOf="@+id/imageButtonSiparisDetayPrepare" />
-
-    <TextView
-        android:id="@+id/textViewDetayDelivered"
-        android:layout_width="96dp"
-        android:layout_height="25dp"
-        android:layout_marginBottom="15dp"
-        android:background="@color/colorPrimaryDark"
-        android:gravity="center_vertical"
-        android:text="  Teslim Edildi"
-        android:textAllCaps="false"
-        android:textColor="#FFFFFF"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/imageButtonSiparisDetayDelivered"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/imageButtonSiparisDetayDelivered" />
-
-    <TextView
-        android:id="@+id/textViewDetayDeliver"
-        android:layout_width="96dp"
-        android:layout_height="25dp"
-        android:layout_marginBottom="15dp"
-        android:background="@color/colorPrimaryDark"
-        android:gravity="center_vertical"
-        android:text="         Yolla"
-        android:textAllCaps="false"
-        android:textColor="#FFFFFF"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/imageButtonSiparisDetayDelivery"
-        app:layout_constraintStart_toStartOf="@+id/imageButtonSiparisDetayDelivery" />
-
-    <ImageButton
-        android:id="@+id/imageButtonSiparisDetayDelivered"
-        android:layout_width="96dp"
-        android:layout_height="96dp"
-        android:backgroundTint="@color/colorPrimary"
-        android:onClick="durumSetDelivered"
-        android:scaleType="fitCenter"
-        app:layout_constraintBottom_toTopOf="@+id/textViewDetayDelivered"
-        app:layout_constraintEnd_toEndOf="@+id/textViewSiparisDetayToplamFiyat"
-        app:srcCompat="@drawable/delivered" />
-
-    <TextView
-        android:id="@+id/textViewSiparisDetaySiparisUrunler"
-        android:layout_width="350dp"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="10dp"
-        android:background="@color/colorPrimaryDark"
-        android:gravity="center_vertical"
-        android:paddingStart="5dp"
-        android:paddingEnd="5dp"
-        android:text=" Sipariş Edilen Ürünler:"
-        android:textAlignment="gravity"
-        android:textAllCaps="false"
-        android:textColor="#FFFFFF"
-        app:layout_constraintBottom_toTopOf="@+id/textViewSiparisDetayToplamFiyat"
-        app:layout_constraintEnd_toEndOf="@+id/textViewSiparisDetayMusteriTarihSaat"
-        app:layout_constraintStart_toStartOf="@+id/textViewSiparisDetayMusteriTarihSaat" />
+        android:orientation="vertical"
+        android:layout_marginTop="0dp">
 
-    <TextView
-        android:id="@+id/textViewSiparisDetayMusteriTarihSaat"
-        android:layout_width="350dp"
-        android:layout_height="25dp"
-        android:layout_marginBottom="10dp"
-        android:background="@color/colorPrimaryDark"
-        android:gravity="center_vertical"
-        android:paddingStart="5dp"
-        android:paddingEnd="5dp"
-        android:text=" Sipariş Zamanı:"
-        android:textAlignment="gravity"
-        android:textAllCaps="false"
-        android:textColor="#FFFFFF"
-        app:layout_constraintBottom_toTopOf="@+id/textViewSiparisDetaySiparisUrunler"
-        app:layout_constraintEnd_toEndOf="@+id/textViewSiparisDetayMusteriTel"
-        app:layout_constraintStart_toStartOf="@+id/textViewSiparisDetayMusteriTel" />
+        <TextView
+            android:id="@+id/textViewSiparisDetayFirmaEmail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:padding="5dp"
+            android:background="@color/colorPrimaryDark"
+            android:text=" Firma Email:"
+            android:textColor="#FFFFFF"/>
 
-    <TextView
-        android:id="@+id/textViewSiparisDetayMusteriSehir"
-        android:layout_width="350dp"
-        android:layout_height="25dp"
-        android:layout_marginBottom="10dp"
-        android:background="@color/colorPrimaryDark"
-        android:gravity="center_vertical"
-        android:paddingStart="5dp"
-        android:paddingEnd="5dp"
-        android:text=" Şehir:"
-        android:textAlignment="gravity"
-        android:textAllCaps="false"
-        android:textColor="#FFFFFF"
-        app:layout_constraintBottom_toTopOf="@+id/textViewSiparisDetayMusteriTel"
-        app:layout_constraintEnd_toEndOf="@+id/textViewSiparisDetayMusteriAdres"
-        app:layout_constraintStart_toStartOf="@+id/textViewSiparisDetayMusteriAdres" />
+        <TextView
+            android:id="@+id/textViewSiparisDetayMusteriAdSoyad"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:padding="5dp"
+            android:background="@color/colorPrimaryDark"
+            android:textColor="#FFFFFF"
+            android:text=" Müşteri Ad Soyad:" />
 
-    <TextView
-        android:id="@+id/textViewSiparisDetayMusteriTel"
-        android:layout_width="350dp"
-        android:layout_height="25dp"
-        android:layout_marginBottom="10dp"
-        android:background="@color/colorPrimaryDark"
-        android:gravity="center_vertical"
-        android:paddingStart="5dp"
-        android:paddingEnd="5dp"
-        android:text=" Müşteri Telefon:"
-        android:textAlignment="gravity"
-        android:textAllCaps="false"
-        android:textColor="#FFFFFF"
-        app:layout_constraintBottom_toTopOf="@+id/textViewSiparisDetayMusteriTarihSaat"
-        app:layout_constraintEnd_toEndOf="@+id/textViewSiparisDetayMusteriSehir"
-        app:layout_constraintStart_toStartOf="@+id/textViewSiparisDetayMusteriSehir" />
+        <TextView
+            android:id="@+id/textViewSiparisDetayMusteriAdres"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:padding="5dp"
+            android:background="@color/colorPrimaryDark"
+            android:text=" Müşteri Adres:"
+            android:textColor="#FFFFFF" />
 
-    <TextView
-        android:id="@+id/textViewSiparisDetayMusteriAdSoyad"
-        android:layout_width="350dp"
-        android:layout_height="25dp"
-        android:layout_marginBottom="10dp"
-        android:background="@color/colorPrimaryDark"
-        android:gravity="center_vertical"
-        android:paddingStart="5dp"
-        android:paddingEnd="5dp"
-        android:text=" Müşteri Ad Soyad:"
-        android:textAlignment="gravity"
-        android:textAllCaps="false"
-        android:textColor="#FFFFFF"
-        app:layout_constraintBottom_toTopOf="@+id/textViewSiparisDetayMusteriAdres"
-        app:layout_constraintEnd_toEndOf="@+id/textViewSiparisDetayFirmaEmail"
-        app:layout_constraintStart_toStartOf="@+id/textViewSiparisDetayFirmaEmail" />
+        <TextView
+            android:id="@+id/textViewSiparisDetayMusteriSehir"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:padding="5dp"
+            android:background="@color/colorPrimaryDark"
+            android:text=" Şehir:"
+            android:textColor="#FFFFFF" />
 
-    <TextView
-        android:id="@+id/textViewSiparisDetayFirmaEmail"
-        android:layout_width="350dp"
-        android:layout_height="25dp"
-        android:layout_marginBottom="10dp"
-        android:background="@color/colorPrimaryDark"
-        android:gravity="center_vertical"
-        android:text=" Firma Email:"
-        android:textAlignment="gravity"
-        android:textAllCaps="false"
-        android:textColor="#FFFFFF"
-        app:layout_constraintBottom_toTopOf="@+id/textViewSiparisDetayMusteriAdSoyad"
-        app:layout_constraintEnd_toEndOf="@+id/textViewSiparisDetaySiparisDurumu"
-        app:layout_constraintStart_toStartOf="@+id/imageViewSiparisDetayDurumu"
-        android:paddingStart="5dp"
-        android:paddingEnd="5dp" />
+        <TextView
+            android:id="@+id/textViewSiparisDetayMusteriTel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:padding="5dp"
+            android:background="@color/colorPrimaryDark"
+            android:text=" Müşteri Telefon:"
+            android:textColor="#FFFFFF" />
 
-    <TextView
-        android:id="@+id/textViewSiparisDetaySiparisDurumu"
-        android:layout_width="240dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="50dp"
-        android:layout_marginEnd="30dp"
-        android:background="@color/colorPrimaryDark"
-        android:gravity="center_vertical"
-        android:paddingStart="5dp"
-        android:paddingEnd="5dp"
-        android:text=" Sipariş Durumu: Yeni Sipariş"
-        android:textAlignment="gravity"
-        android:textAllCaps="false"
-        android:textColor="#FFFFFF"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        <TextView
+            android:id="@+id/textViewSiparisDetayMusteriTarihSaat"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:padding="5dp"
+            android:background="@color/colorPrimaryDark"
+            android:text=" Sipariş Zamanı:"
+            android:textColor="#FFFFFF" />
 
-    <ImageView
-        android:id="@+id/imageViewSiparisDetayDurumu"
-        android:layout_width="96dp"
-        android:layout_height="96dp"
-        android:layout_marginStart="30dp"
-        android:layout_marginTop="20dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/new_order" />
+        <TextView
+            android:id="@+id/textViewSiparisDetaySiparisUrunler"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:padding="5dp"
+            android:background="@color/colorPrimaryDark"
+            android:text=" Sipariş Edilen Ürünler:"
+            android:textColor="#FFFFFF" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <TextView
+            android:id="@+id/textViewSiparisDetayToplamFiyat"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:padding="5dp"
+            android:background="@color/colorPrimaryDark"
+            android:text=" Toplam Sipariş Tutarı:"
+            android:textColor="#FFFFFF" />
+
+    </LinearLayout>
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_weight="1">
+
+            <ImageButton
+                android:id="@+id/imageButtonSiparisDetayPrepare"
+                android:layout_width="75dp"
+                android:layout_height="75dp"
+                android:backgroundTint="@color/colorPrimary"
+                android:foregroundTint="#FFFFFF"
+                android:onClick="durumSetPrepare"
+                android:saveEnabled="false"
+                android:scaleType="fitCenter"
+                app:srcCompat="@drawable/prepare" />
+
+            <TextView
+                android:id="@+id/textViewDetayPrepare"
+                android:layout_width="75dp"
+                android:layout_height="25dp"
+                android:background="@color/colorPrimaryDark"
+                android:gravity="center"
+                android:text="Hazırla"
+                android:textColor="#FFFFFF" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_weight="1">
+
+            <ImageButton
+                android:id="@+id/imageButtonSiparisDetayDelivery"
+                android:layout_width="75dp"
+                android:layout_height="75dp"
+                android:backgroundTint="@color/colorPrimary"
+                android:onClick="durumSetDeliver"
+                android:scaleType="fitCenter"
+                app:srcCompat="@drawable/delivery" />
+
+            <TextView
+                android:id="@+id/textViewDetayDeliver"
+                android:layout_width="75dp"
+                android:layout_height="25dp"
+                android:background="@color/colorPrimaryDark"
+                android:gravity="center"
+                android:text="Yolla"
+                android:textColor="#FFFFFF" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <ImageButton
+                android:id="@+id/imageButtonSiparisDetayDelivered"
+                android:layout_width="75dp"
+                android:layout_height="75dp"
+                android:backgroundTint="@color/colorPrimary"
+                android:onClick="durumSetDelivered"
+                android:scaleType="fitCenter"
+                app:srcCompat="@drawable/delivered" />
+
+            <TextView
+                android:id="@+id/textViewDetayDelivered"
+                android:layout_width="75dp"
+                android:layout_height="25dp"
+                android:background="@color/colorPrimaryDark"
+                android:gravity="center"
+                android:text="Teslim Edildi"
+                android:textColor="#FFFFFF"
+                android:textSize="12sp" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

@@ -4,25 +4,26 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_margin="5dp"
     tools:context=".ui_firma.firmaActivity">
 
     <Button
         android:id="@+id/gelen_siparis_firma_button"
         android:layout_width="180dp"
         android:layout_height="180dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="19dp"
         android:background="@color/colorPrimaryDark"
         android:fontFamily="sans-serif-black"
         android:onClick="gelenSiparislerActivity"
         android:text="Gelen Siparişler"
+        android:gravity="center"
         android:textAllCaps="false"
         android:textColor="@color/textColor"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="@+id/bilgi_guncelle_firma_button"
         app:layout_constraintEnd_toStartOf="@+id/bilgi_guncelle_firma_button"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/bilgi_guncelle_firma_button" />
+        app:layout_constraintTop_toTopOf="@+id/bilgi_guncelle_firma_button"
+        android:layout_marginRight="5dp"/>
 
     <Button
         android:id="@+id/menu_guncelle_firma_button"
@@ -35,7 +36,8 @@
         android:text="Menüyü Güncelle"
         android:textAllCaps="false"
         android:textColor="@color/textColor"
-        android:textSize="20dp"
+        android:textSize="20sp"
+        android:gravity="center"
         app:layout_constraintBottom_toTopOf="@+id/onay_bilgi_tv_firma"
         app:layout_constraintEnd_toEndOf="@+id/gelen_siparis_firma_button"
         app:layout_constraintStart_toStartOf="@+id/gelen_siparis_firma_button"
@@ -45,10 +47,7 @@
         android:id="@+id/bilgi_guncelle_firma_button"
         android:layout_width="180dp"
         android:layout_height="180dp"
-        android:layout_row="1"
-        android:layout_column="0"
         android:layout_marginTop="25dp"
-        android:layout_marginEnd="16dp"
         android:layout_marginBottom="22dp"
         android:background="@color/colorPrimaryDark"
         android:fontFamily="sans-serif-black"
@@ -57,6 +56,7 @@
         android:textAllCaps="false"
         android:textColor="@color/textColor"
         android:textSize="20sp"
+        android:gravity="center"
         app:layout_constraintBottom_toTopOf="@+id/menu_guncelle_firma_button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/gelen_siparis_firma_button"
@@ -64,11 +64,9 @@
 
     <TextView
         android:id="@+id/onay_bilgi_tv_firma"
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="110dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
         android:background="@color/alternativeColor"
         android:drawableLeft="@drawable/ic_info_outline_light_24dp"
         android:padding="5dp"
@@ -78,6 +76,7 @@
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.512"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/menu_guncelle_firma_button" />
 
